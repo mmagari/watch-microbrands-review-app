@@ -36,6 +36,14 @@
   min-width: 0;
 }
 
+.resultsHeader {
+  margin-bottom: $spacing-lg;
+}
+
+.resultsText {
+  color: $color-text-secondary;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -73,12 +81,39 @@
 .tag {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   padding: 6px 10px;
   border: 1px solid $color-border-light;
   border-radius: $radius-pill;
   font-size: $font-size-sm;
   color: $color-text-secondary;
   background: $color-card-background;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.tag:hover {
+  border-color: $color-border-hover;
+  color: $color-text-primary;
+}
+
+.tagActive {
+  border-color: $color-text-primary;
+  color: $color-text-primary;
+}
+
+.clearButton {
+  border: 1px solid $color-border-light;
+  background: $color-card-background;
+  color: $color-text-secondary;
+  border-radius: $radius-pill;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.clearButton:hover {
+  border-color: $color-border-hover;
+  color: $color-text-primary;
 }
 
 .topBrandList {
@@ -101,6 +136,21 @@
 
 .topBrandRating {
   color: $color-text-muted;
+}
+
+.emptyState {
+  @include card;
+  @include card-padding;
+}
+
+.emptyStateTitle {
+  margin-bottom: $spacing-sm;
+  font-size: $font-size-lg;
+  color: $color-text-primary;
+}
+
+.emptyStateText {
+  color: $color-text-secondary;
 }
 
 @include laptop-down {
