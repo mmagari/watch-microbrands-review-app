@@ -1,26 +1,22 @@
-export type BrandStyle =
-  | "diver"
-  | "dress"
-  | "field"
-  | "casual"
-  | "pilot"
-  | "gmt"
-  | "sport"
-  | "chronograph";
+import type { Brand } from "../types/brand";
 
-export type PriceBucket =
-  | "Under $500"
-  | "$500-$1000"
-  | "$1000-$1500"
-  | "$1500-$2000";
-
-export type Brand = {
-  id: string;
-  name: string;
-  country: string;
-  styles: BrandStyle[];
-  startingPriceUsd: number;
-  featuredModel: string;
-  description: string;
-  image: string;
-};
+export const brands: Brand[] = [
+  {
+    id: "baltic",
+    name: "Baltic",
+    country: "France",
+    styles: ["diver", "dress"],
+    priceRange: "$500-$1000",
+    description: "Baltic is a French microbrand known for vintage inspired watches.",
+    image: "https://placehold.co/300x200"
+  },
+  {
+    id: "lorier",
+    name: "Lorier",
+    country: "USA",
+    styles: ["field", "diver"],
+    priceRange: "$500-$1000",
+    description: "Lorier creates vintage-inspired tool watches.",
+    image: "https://placehold.co/600x400"
+  }
+];
