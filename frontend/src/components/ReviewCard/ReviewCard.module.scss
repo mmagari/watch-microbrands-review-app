@@ -1,21 +1,23 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
 .card {
-  background: white;
-  border: 1px solid #ececec;
-  border-radius: 10px;
-  padding: 16px;
+  @include card;
+  @include card-padding;
 }
 
 .author {
-  font-weight: 600;
   margin-bottom: 6px;
+  font-weight: 600;
+  color: $color-text-primary;
 }
 
 .comment {
-  margin: 8px 0;
-  color: #333;
+  margin: $spacing-sm 0;
+  color: $color-text-secondary;
 }
 
 .date {
   font-size: 0.8rem;
-  color: #777;
+  color: $color-text-muted;
 }
