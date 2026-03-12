@@ -1,0 +1,43 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #1f4b99;
+}
+
+.image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.section {
+  margin-top: 24px;
+}
+
+.reviewsSection {
+  margin-top: 32px;
+}
+
+.reviewList {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.meta {
+  margin: 6px 0;
+  color: #444;
+}
+
+.notFoundText {
+  margin-bottom: 16px;
+}

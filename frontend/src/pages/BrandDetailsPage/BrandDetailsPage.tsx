@@ -4,6 +4,7 @@ import { reviews } from "../../data/reviews";
 import { calculateAverageRating } from "../../utils/calculateAverageRating";
 import { ReviewCard } from "../../components/ReviewCard/ReviewCard";
 import { RatingStars } from "../../components/RatingStars/RatingStars";
+import styles from "./BrandDetailsPage.module.scss";
 
 export const BrandDetailsPage = () => {
   const { id } = useParams();
@@ -12,10 +13,12 @@ export const BrandDetailsPage = () => {
 
   if (!brand) {
     return (
-      <main style={{ maxWidth: "900px", margin: "0 auto", padding: "24px" }}>
+      <main className={styles.page}>
         <h1>Brand not found</h1>
-        <p>We couldn’t find the brand you’re looking for.</p>
-        <Link to="/">Go back to homepage</Link>
+        <p className={styles.notFoundText}>We couldn’t find the brand you’re looking for.</p>
+        <Link to="/" className={styles.backLink}>
+          Go back to homepage
+        </Link>
       </main>
     );
   }
@@ -24,42 +27,32 @@ export const BrandDetailsPage = () => {
   const averageRating = calculateAverageRating(brandReviews);
 
   return (
-    <main style={{ maxWidth: "900px", margin: "0 auto", padding: "24px" }}>
-      <Link to="/" style={{ display: "inline-block", marginBottom: "20px" }}>
+    <main className={styles.page}>
+      <Link to="/" className={styles.backLink}>
         ← Back to brands
       </Link>
 
       <article>
-        <img
-          src={brand.image}
-          alt={brand.name}
-          style={{
-            width: "100%",
-            maxHeight: "400px",
-            objectFit: "cover",
-            borderRadius: "12px",
-            marginBottom: "24px",
-          }}
-        />
+        <img className={styles.image} src={brand.image} alt={brand.name} />
 
         <h1>{brand.name}</h1>
 
-        <p>
+        <p className={styles.meta}>
           <strong>Country:</strong> {brand.country}
         </p>
-        <p>
+        <p className={styles.meta}>
           <strong>Price range:</strong> {brand.priceRange}
         </p>
-        <p>
+        <p className={styles.meta}>
           <strong>Styles:</strong> {brand.styles.join(", ")}
         </p>
 
-        <section style={{ marginTop: "24px" }}>
+        <section className={styles.section}>
           <h2>About the brand</h2>
           <p>{brand.description}</p>
         </section>
 
-        <section style={{ marginTop: "32px" }}>
+        <section className={styles.reviewSection}>
           <h2>Rating & Reviews</h2>
 
           {brandReviews.length > 0 ? (
@@ -72,13 +65,7 @@ export const BrandDetailsPage = () => {
                 <strong>{brandReviews.length}</strong> review(s)
               </p>
 
-              <div
-                style={{
-                  display: "grid",
-                  gap: "16px",
-                  marginTop: "20px",
-                }}
-              >
+              <div className={styles.reviewList}>
                 {brandReviews.map((review) => (
                   <ReviewCard key={review.id} review={review} />
                 ))}
