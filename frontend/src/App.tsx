@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HomePage } from "./pages/HomePage";
-import { BrandDetailsPage } from "./pages/BrandDetailsPage";
+import { HomePage } from "./pages/HomePage/HomePage";
+import { BrandDetailsPage } from "./pages/BrandDetailsPage/BrandDetailsPage";
 
 function App() {
   return (

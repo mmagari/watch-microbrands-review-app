@@ -1,9 +1,9 @@
 import { Link, useParams } from "react-router-dom";
-import { brands } from "../data/brands";
-import { reviews } from "../data/reviews";
-import { calculateAverageRating } from "../utils/calculateAverageRating";
-import { ReviewCard } from "../components/ReviewCard";
-import { RatingStars } from "../components/RatingStars";
+import { brands } from "../../data/brands";
+import { reviews } from "../../data/reviews";
+import { calculateAverageRating } from "../../utils/calculateAverageRating";
+import { ReviewCard } from "../../components/ReviewCard/ReviewCard";
+import { RatingStars } from "../../components/RatingStars/RatingStars";
 
 export const BrandDetailsPage = () => {
   const { id } = useParams();

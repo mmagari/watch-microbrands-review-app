@@ -1,5 +1,5 @@
-import { BrandCard } from "../components/BrandCard";
-import { brands } from "../data/brands";
+import { BrandCard } from "../../components/BrandCard/BrandCard";
+import { brands } from "../../data/brands";
 
 export const HomePage = () => {
   return (

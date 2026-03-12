@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import type { Brand } from "../types/brand";
-import { reviews } from "../data/reviews";
-import { calculateAverageRating } from "../utils/calculateAverageRating";
-import { RatingStars } from "./RatingStars";
+import type { Brand } from "../../types/brand";
+import { reviews } from "../../data/reviews";
+import { calculateAverageRating } from "../../utils/calculateAverageRating";
+import { RatingStars } from "../RatingStars/RatingStars";
 
 type Props = {
   brand: Brand;
