@@ -1,5 +1,6 @@
 import type { Review } from "../../types/review";
 import { RatingStars } from "../RatingStars/RatingStars";
+import styles from "./ReviewCard.module.scss"
 
 type Props = {
   review: Review;
@@ -7,24 +8,16 @@ type Props = {
 
 export const ReviewCard = ({ review }: Props) => {
   return (
-    <article
-      style={{
-        border: "1px solid #ddd",
-        borderRadius: "12px",
-        padding: "16px",
-        backgroundColor: "#fff",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-      }}
-    >
-      <div style={{ marginBottom: "8px" }}>
+    <article className={styles.card}>
+      <div className={styles.author}>
         <strong>{review.author}</strong>
       </div>
 
       <RatingStars rating={review.rating} />
 
-      <p style={{ margin: "8px 0" }}>{review.comment}</p>
+      <p className={styles.comment}>{review.comment}</p>
 
-      <small>{review.createdAt}</small>
+      <small className={styles.date}>{review.createdAt}</small>
     </article>
   );
 };
