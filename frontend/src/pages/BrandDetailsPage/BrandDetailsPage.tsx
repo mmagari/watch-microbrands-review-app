@@ -4,6 +4,7 @@ import { reviews } from "../../data/reviews";
 import { calculateAverageRating } from "../../utils/calculateAverageRating";
 import { ReviewCard } from "../../components/ReviewCard/ReviewCard";
 import { RatingStars } from "../../components/RatingStars/RatingStars";
+import { getPriceBucket } from "../../utils/getPriceBucket";
 import styles from "./BrandDetailsPage.module.scss";
 
 export const BrandDetailsPage = () => {
@@ -41,8 +42,14 @@ export const BrandDetailsPage = () => {
           <strong>Country:</strong> {brand.country}
         </p>
         <p className={styles.meta}>
-          <strong>Price range:</strong> {brand.priceRange}
-        </p>
+          <strong>Starting price:</strong> ${brand.startingPriceUsd}
+            </p>
+            <p className={styles.meta}>
+              <strong>Featured model:</strong> {brand.featuredModel}
+            </p>
+            <p className={styles.meta}>
+              <strong>Price bracket:</strong> {getPriceBucket(brand.startingPriceUsd)}
+            </p>
         <p className={styles.meta}>
           <strong>Styles:</strong> {brand.styles.join(", ")}
         </p>
