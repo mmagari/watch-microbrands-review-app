@@ -1,0 +1,31 @@
+@use "./variables" as *;
+@use "./breakpoints" as *;
+
+@mixin container($max-width: $container-width) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding-left: $spacing-xl;
+  padding-right: $spacing-xl;
+}
+
+@mixin card {
+  background: $color-card-background;
+  border: 1px solid $color-border-light;
+  border-radius: $radius-md;
+}
+
+@mixin card-padding {
+  padding: $spacing-lg;
+}
+
+@mixin mobile-down {
+  @media (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin laptop-down {
+  @media (max-width: $breakpoint-lg) {
+    @content;
+  }
+}
