@@ -1,5 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import { brands } from "../data/brands";
+import { reviews } from "../data/reviews";
+import { calculateAverageRating } from "../utils/calculateAverageRating";
+import { ReviewCard } from "../components/ReviewCard";
+import { RatingStars } from "../components/RatingStars";
 
 export const BrandDetailsPage = () => {
   const { id } = useParams();
@@ -15,6 +19,9 @@ export const BrandDetailsPage = () => {
       </main>
     );
   }
+
+  const brandReviews = reviews.filter((review) => review.brandId === brand.id);
+  const averageRating = calculateAverageRating(brandReviews);
 
   return (
     <main style={{ maxWidth: "900px", margin: "0 auto", padding: "24px" }}>
@@ -36,6 +43,7 @@ export const BrandDetailsPage = () => {
         />
 
         <h1>{brand.name}</h1>
+
         <p>
           <strong>Country:</strong> {brand.country}
         </p>
@@ -49,6 +57,36 @@ export const BrandDetailsPage = () => {
         <section style={{ marginTop: "24px" }}>
           <h2>About the brand</h2>
           <p>{brand.description}</p>
+        </section>
+
+        <section style={{ marginTop: "32px" }}>
+          <h2>Rating & Reviews</h2>
+
+          {brandReviews.length > 0 ? (
+            <>
+              <p>
+                <strong>Average rating:</strong> {averageRating} / 5
+              </p>
+              <RatingStars rating={averageRating} />
+              <p>
+                <strong>{brandReviews.length}</strong> review(s)
+              </p>
+
+              <div
+                style={{
+                  display: "grid",
+                  gap: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                {brandReviews.map((review) => (
+                  <ReviewCard key={review.id} review={review} />
+                ))}
+              </div>
+            </>
+          ) : (
+            <p>No reviews yet for this brand.</p>
+          )}
         </section>
       </article>
     </main>
