@@ -1,36 +1,130 @@
 .page {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 40px 24px;
+}
+
+.intro {
+  margin-bottom: 32px;
+  max-width: 720px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.7;
 }
 
 .layout {
   display: grid;
-  grid-template-columns: 220px 1fr 220px;
-  gap: 24px;
+  grid-template-columns: 240px minmax(0, 1fr) 240px;
+  gap: 32px;
+  align-items: start;
+}
+
+.mainColumn {
+  min-width: 0;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
 }
 
 .sidebar {
-  font-size: 0.9rem;
+  position: sticky;
+  top: 88px;
 }
 
-.sidebarSection {
-  margin-bottom: 24px;
+.sidebarCard {
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.sidebarSection + .sidebarSection {
+  margin-top: 24px;
 }
 
 .sidebarTitle {
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-bottom: 10px;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .tag {
-  display: block;
-  margin-bottom: 6px;
-  color: #444;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid #ececec;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: #333;
+  background: #fff;
+}
+
+.topBrandList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topBrandItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.topBrandName {
+  color: #111;
+}
+
+.topBrandRating {
+  color: #666;
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 24px 16px;
+  }
+
+  .title {
+    font-size: 1.7rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
