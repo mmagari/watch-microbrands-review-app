@@ -3,10 +3,11 @@ import { BrandCard } from "../../components/BrandCard/BrandCard";
 import { brands } from "../../data/brands";
 import { reviews } from "../../data/reviews";
 import { calculateAverageRating } from "../../utils/calculateAverageRating";
+import { getPriceBucket } from "../../utils/getPriceBucket";
 import styles from "./HomePage.module.scss";
 
 const styleOptions = ["Diver", "Dress", "Field", "Casual", "Pilot"];
-const priceOptions = ["Under $500", "$500-$1000", "$1000-$2000"];
+const priceOptions = ["Under $500", "$500-$1000", "$1500-$2000", "$1000-$2000"];
 
 export const HomePage = () => {
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
@@ -31,7 +32,7 @@ export const HomePage = () => {
       : true;
 
     const matchesPriceRange = selectedPriceRange
-      ? brand.priceRange === selectedPriceRange
+      ? getPriceBucket(brand.startingPriceUsd) === selectedPriceRange
       : true;
 
     return matchesStyle && matchesPriceRange;
