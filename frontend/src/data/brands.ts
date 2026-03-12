@@ -15,7 +15,7 @@ export const brands: Brand[] = [
     name: "Lorier",
     country: "USA",
     styles: ["field", "diver"],
-    priceRange: "$400-$900",
+    priceRange: "$500-$1000",
     description: "Lorier creates vintage-inspired tool watches.",
     image: "https://placehold.co/600x400"
   }
