@@ -1,17 +1,25 @@
+import { BrandCard } from "../components/BrandCard";
 import { brands } from "../data/brands";
 
 export const HomePage = () => {
   return (
-    <div>
-      <h1>Microbrand Watch Directory</h1>
+    <main style={{ maxWidth: "1200px", margin: "0 auto", padding: "24px" }}>
+      <header style={{ marginBottom: "24px" }}>
+        <h1>Microbrand Watch Directory</h1>
+        <p>Browse interesting watch microbrands and discover what makes them unique.</p>
+      </header>
 
-      {brands.map((brand) => (
-        <div key={brand.id}>
-          <h2>{brand.name}</h2>
-          <p>{brand.country}</p>
-          <p>{brand.priceRange}</p>
-        </div>
-      ))}
-    </div>
+      <section
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: "20px",
+        }}
+      >
+        {brands.map((brand) => (
+          <BrandCard key={brand.id} brand={brand} />
+        ))}
+      </section>
+    </main>
   );
 };

@@ -17,6 +17,6 @@ export const brands: Brand[] = [
     styles: ["field", "diver"],
     priceRange: "$400-$900",
     description: "Lorier creates vintage-inspired tool watches.",
-    image: "https://placehold.co/300x200"
+    image: "https://placehold.co/600x400"
   }
 ];
