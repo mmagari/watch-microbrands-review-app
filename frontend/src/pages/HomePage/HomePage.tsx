@@ -170,10 +170,18 @@ export const HomePage = () => {
             </div>
           ) : (
             <div className={styles.emptyState}>
-              <h2 className={styles.emptyStateTitle}>No brands found</h2>
+              <h2 className={styles.emptyStateTitle}>No matching brands found</h2>
               <p className={styles.emptyStateText}>
-                Try changing or clearing your filters to see more results.
+                We couldn’t find any brands matching your current filters or search term.
               </p>
+
+              <button
+                type="button"
+                className={styles.emptyStateButton}
+                onClick={clearFilters}
+              >
+                Clear all filters
+              </button>
             </div>
           )}
         </section>

@@ -83,6 +83,20 @@
   color: $color-text-secondary;
 }
 
+.emptyStateButton {
+  margin-top: $spacing-lg;
+  border: 1px solid $color-border-light;
+  background: $color-card-background;
+  color: $color-text-primary;
+  border-radius: $radius-pill;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.emptyStateButton:hover {
+  border-color: $color-border-hover;
+}
+
 @include laptop-down {
   .layout {
     grid-template-columns: 1fr;
