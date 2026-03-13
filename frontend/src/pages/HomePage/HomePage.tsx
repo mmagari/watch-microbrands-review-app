@@ -36,19 +36,6 @@ export const HomePage = () => {
   const [selectedPriceRange, setSelectedPriceRange] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("rating-desc");
-  
-  const topBrands = [...brands]
-    .map((brand) => {
-      const brandReviews = reviews.filter((r) => r.brandId === brand.id);
-      const rating = calculateAverageRating(brandReviews);
-
-      return {
-        ...brand,
-        rating,
-      };
-    })
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 5);
 
   const filteredBrands = brands.filter((brand) => {
     const matchesStyle = selectedStyle
@@ -61,6 +48,22 @@ export const HomePage = () => {
 
     return matchesStyle && matchesPriceRange;
   });
+
+  const brandsWithRating = useMemo(() => {
+    return brands.map((brand) => {
+      const brandReviews = reviews.filter((review) => review.brandId === brand.id);
+      const rating = calculateAverageRating(brandReviews);
+
+      return {
+        ...brand,
+        rating,
+      };
+    });
+  }, []);
+
+  const topBrands = [...brandsWithRating]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 5);
 
   const handleStyleClick = (style: string) => {
     setSelectedStyle((current) => (current === style ? null : style));
