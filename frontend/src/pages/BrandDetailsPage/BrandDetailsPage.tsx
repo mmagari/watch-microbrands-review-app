@@ -1,16 +1,29 @@
+import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { brands } from "../../data/brands";
-import { reviews } from "../../data/reviews";
-import { calculateAverageRating } from "../../utils/calculateAverageRating";
 import { ReviewCard } from "../../components/ReviewCard/ReviewCard";
+import { ReviewForm } from "../../components/ReviewForm/ReviewForm";
 import { RatingStars } from "../../components/RatingStars/RatingStars";
+import { brands } from "../../data/brands";
+import { reviews as initialReviews } from "../../data/reviews";
+import { calculateAverageRating } from "../../utils/calculateAverageRating";
 import { getPriceBucket } from "../../utils/getPriceBucket";
 import styles from "./BrandDetailsPage.module.scss";
 
 export const BrandDetailsPage = () => {
   const { id } = useParams();
+  const [reviews, setReviews] = useState(initialReviews);
 
   const brand = brands.find((item) => item.id === id);
+
+  const brandReviews = useMemo(() => {
+    if (!brand) {
+      return [];
+    }
+
+    return reviews.filter((review) => review.brandId === brand.id);
+  }, [reviews, brand]);
+
+  const averageRating = calculateAverageRating(brandReviews);
 
   if (!brand) {
     return (
@@ -24,8 +37,26 @@ export const BrandDetailsPage = () => {
     );
   }
 
-  const brandReviews = reviews.filter((review) => review.brandId === brand.id);
-  const averageRating = calculateAverageRating(brandReviews);
+  const handleAddReview = ({
+    author,
+    rating,
+    comment,
+  }: {
+    author: string;
+    rating: number;
+    comment: string;
+  }) => {
+    const newReview = {
+      id: `review-${Date.now()}`,
+      brandId: brand.id,
+      author,
+      rating,
+      comment,
+      createdAt: new Date().toISOString().split("T")[0],
+    };
+
+    setReviews((currentReviews) => [newReview, ...currentReviews]);
+  };
 
   return (
     <main className={styles.page}>
@@ -43,13 +74,13 @@ export const BrandDetailsPage = () => {
         </p>
         <p className={styles.meta}>
           <strong>Starting price:</strong> ${brand.startingPriceUsd}
-            </p>
-            <p className={styles.meta}>
-              <strong>Featured model:</strong> {brand.featuredModel}
-            </p>
-            <p className={styles.meta}>
-              <strong>Price bracket:</strong> {getPriceBucket(brand.startingPriceUsd)}
-            </p>
+        </p>
+        <p className={styles.meta}>
+          <strong>Featured model:</strong> {brand.featuredModel}
+        </p>
+        <p className={styles.meta}>
+          <strong>Price bracket:</strong> {getPriceBucket(brand.startingPriceUsd)}
+        </p>
         <p className={styles.meta}>
           <strong>Styles:</strong> {brand.styles.join(", ")}
         </p>
@@ -59,7 +90,7 @@ export const BrandDetailsPage = () => {
           <p>{brand.description}</p>
         </section>
 
-        <section className={styles.reviewSection}>
+        <section className={styles.reviewsSection}>
           <h2>Rating & Reviews</h2>
 
           {brandReviews.length > 0 ? (
@@ -82,6 +113,8 @@ export const BrandDetailsPage = () => {
             <p>No reviews yet for this brand.</p>
           )}
         </section>
+
+        <ReviewForm onSubmit={handleAddReview} />
       </article>
     </main>
   );
