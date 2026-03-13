@@ -112,7 +112,12 @@ export const BrandDetailsPage = () => {
               </div>
             </>
           ) : (
-            <p>No reviews yet for this brand.</p>
+            <div className={styles.emptyReviews}>
+              <h3 className={styles.emptyReviewsTitle}>No reviews yet</h3>
+              <p className={styles.emptyReviewsText}>
+                Be the first person to share an opinion about this brand.
+              </p>
+            </div>
           )}
         </section>
 

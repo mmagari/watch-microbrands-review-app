@@ -38,3 +38,21 @@
   margin-bottom: $spacing-lg;
   color: $color-text-secondary;
 }
+
+.emptyReviews {
+  margin-top: $spacing-lg;
+  border: 1px solid $color-border-light;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  background: $color-card-background;
+}
+
+.emptyReviewsTitle {
+  margin-bottom: $spacing-sm;
+  font-size: 1.05rem;
+  color: $color-text-primary;
+}
+
+.emptyReviewsText {
+  color: $color-text-secondary;
+}
