@@ -71,21 +71,24 @@ export const BrandDetailsPage = () => {
 
         <h1>{brand.name}</h1>
 
-        <p className={styles.meta}>
-          <strong>Country:</strong> {brand.country}
-        </p>
-        <p className={styles.meta}>
-          <strong>Starting price:</strong> ${brand.startingPriceUsd}
-        </p>
-        <p className={styles.meta}>
-          <strong>Featured model:</strong> {brand.featuredModel}
-        </p>
-        <p className={styles.meta}>
-          <strong>Price bracket:</strong> {getPriceBucket(brand.startingPriceUsd)}
-        </p>
-        <p className={styles.meta}>
-          <strong>Styles:</strong> {brand.styles.join(", ")}
-        </p>
+        <div className={styles.factsGrid}>
+          <div className={styles.factCard}>
+            <span className={styles.factLabel}>Country</span>
+            <span className={styles.factValue}>{brand.country}</span>
+          </div>
+
+          <div className={styles.factCard}>
+            <span className={styles.factLabel}>Featured model</span>
+            <span className={styles.factValue}>{brand.featuredModel}</span>
+          </div>
+
+          <div className={styles.factCard}>
+            <span className={styles.factLabel}>Price bracket</span>
+            <span className={styles.factValue}>
+              {getPriceBucket(brand.startingPriceUsd)}
+            </span>
+          </div>
+        </div>
 
         <section className={styles.section}>
           <h2>About the brand</h2>

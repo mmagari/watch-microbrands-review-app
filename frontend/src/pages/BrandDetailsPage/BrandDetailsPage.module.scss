@@ -56,3 +56,36 @@
 .emptyReviewsText {
   color: $color-text-secondary;
 }
+
+.factsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: $spacing-md;
+  margin: $spacing-lg 0;
+}
+
+.factCard {
+  border: 1px solid $color-border-light;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  background: $color-card-background;
+}
+
+.factLabel {
+  display: block;
+  margin-bottom: 6px;
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}
+
+.factValue {
+  font-size: 0.95rem;
+  color: $color-text-primary;
+  font-weight: 500;
+}
+
+@include mobile-down {
+  .factsGrid {
+    grid-template-columns: 1fr;
+  }
+}
