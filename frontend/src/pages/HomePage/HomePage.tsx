@@ -5,7 +5,8 @@ import { BrandsToolbar } from "../../components/BrandsToolbar/BrandsToolbar";
 import { FilterSidebar } from "../../components/FilterSidebar/FilterSidebar";
 import { TopBrandsSidebar } from "../../components/TopBrandsSidebar/TopBrandsSidebar";
 import { brands } from "../../data/brands";
-import { reviews } from "../../data/reviews";
+import { reviews as initialReviews } from "../../data/reviews";
+import { getAllReviews } from "../../services/reviewsService";
 import { calculateAverageRating } from "../../utils/calculateAverageRating";
 import { getPriceBucket } from "../../utils/getPriceBucket";
 import styles from "./HomePage.module.scss";
@@ -40,10 +41,11 @@ export const HomePage = () => {
   const [selectedPriceRange, setSelectedPriceRange] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("rating-desc");
+  const allReviews = useMemo(() => getAllReviews(initialReviews), []);
 
   const brandsWithRating = useMemo(() => {
     return brands.map((brand) => {
-      const brandReviews = reviews.filter((review) => review.brandId === brand.id);
+      const brandReviews = allReviews.filter((review) => review.brandId === brand.id);
       const rating = calculateAverageRating(brandReviews);
 
       return {
@@ -51,11 +53,11 @@ export const HomePage = () => {
         rating,
       };
     });
-  }, []);
+  }, [allReviews]);
 
-  const topBrands = [...brandsWithRating]
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 5);
+  const topBrands = useMemo(() => {
+    return [...brandsWithRating].sort((a, b) => b.rating - a.rating).slice(0, 5);
+  }, [brandsWithRating]);
 
   const filteredBrands = useMemo(() => {
     const filtered = brandsWithRating.filter((brand) => {
