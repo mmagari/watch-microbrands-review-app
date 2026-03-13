@@ -1,18 +1,42 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { BrandCard } from "../../components/BrandCard/BrandCard";
 import { brands } from "../../data/brands";
 import { reviews } from "../../data/reviews";
-import { calculateAverageRating } from "../../utils/calculateAverageRating";
 import { getPriceBucket } from "../../utils/getPriceBucket";
+import { calculateAverageRating } from "../../utils/calculateAverageRating";
 import styles from "./HomePage.module.scss";
 
-const styleOptions = ["Diver", "Dress", "Field", "Casual", "Pilot"];
-const priceOptions = ["Under $500", "$500-$1000", "$1500-$2000", "$1000-$2000"];
+const styleOptions = [
+  "Diver",
+  "Dress",
+  "Field",
+  "Casual",
+  "Pilot",
+  "GMT",
+  "Sport",
+  "Chronograph",
+];
+
+const priceOptions = [
+  "Under $500",
+  "$500-$1000",
+  "$1000-$1500",
+  "$1500-$2000",
+];
+
+type SortOption =
+  | "name-asc"
+  | "name-desc"
+  | "price-asc"
+  | "price-desc"
+  | "rating-desc";
 
 export const HomePage = () => {
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
   const [selectedPriceRange, setSelectedPriceRange] = useState<string | null>(null);
-
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortOption, setSortOption] = useState<SortOption>("rating-desc");
+  
   const topBrands = [...brands]
     .map((brand) => {
       const brandReviews = reviews.filter((r) => r.brandId === brand.id);
