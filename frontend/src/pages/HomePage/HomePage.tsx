@@ -37,18 +37,6 @@ export const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("rating-desc");
 
-  const filteredBrands = brands.filter((brand) => {
-    const matchesStyle = selectedStyle
-      ? brand.styles.some((style) => style.toLowerCase() === selectedStyle.toLowerCase())
-      : true;
-
-    const matchesPriceRange = selectedPriceRange
-      ? getPriceBucket(brand.startingPriceUsd) === selectedPriceRange
-      : true;
-
-    return matchesStyle && matchesPriceRange;
-  });
-
   const brandsWithRating = useMemo(() => {
     return brands.map((brand) => {
       const brandReviews = reviews.filter((review) => review.brandId === brand.id);
@@ -60,6 +48,42 @@ export const HomePage = () => {
       };
     });
   }, []);
+
+  const filteredBrands = useMemo(() => {
+    const filtered = brandsWithRating.filter((brand) => {
+      const matchesStyle = selectedStyle
+        ? brand.styles.some((style) => style.toLowerCase() === selectedStyle.toLowerCase())
+        : true;
+
+      const matchesPriceRange = selectedPriceRange
+        ? getPriceBucket(brand.startingPriceUsd) === selectedPriceRange
+        : true;
+
+      const matchesSearch = brand.name
+        .toLowerCase()
+        .includes(searchTerm.trim().toLowerCase());
+
+      return matchesStyle && matchesPriceRange && matchesSearch;
+    });
+
+    const sorted = [...filtered].sort((a, b) => {
+      switch (sortOption) {
+        case "name-asc":
+          return a.name.localeCompare(b.name);
+        case "name-desc":
+          return b.name.localeCompare(a.name);
+        case "price-asc":
+          return a.startingPriceUsd - b.startingPriceUsd;
+        case "price-desc":
+          return b.startingPriceUsd - a.startingPriceUsd;
+        case "rating-desc":
+        default:
+          return b.rating - a.rating;
+      }
+    });
+
+    return sorted;
+  }, [brandsWithRating, selectedStyle, selectedPriceRange, searchTerm, sortOption]);
 
   const topBrands = [...brandsWithRating]
     .sort((a, b) => b.rating - a.rating)
