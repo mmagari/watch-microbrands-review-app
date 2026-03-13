@@ -22,6 +22,7 @@ export const ReviewForm = ({ onSubmit }: Props) => {
   const [rating, setRating] = useState("5");
   const [comment, setComment] = useState("");
   const [errors, setErrors] = useState<FormErrors>({});
+  const [successMessage, setSuccessMessage] = useState("");
 
   const validate = () => {
     const newErrors: FormErrors = {};
@@ -58,6 +59,8 @@ export const ReviewForm = ({ onSubmit }: Props) => {
       rating: Number(rating),
       comment: comment.trim(),
     });
+    
+    setSuccessMessage("Your review has been added.");
 
     setAuthor("");
     setRating("5");
@@ -78,7 +81,10 @@ export const ReviewForm = ({ onSubmit }: Props) => {
           type="text"
           className={styles.input}
           value={author}
-          onChange={(event) => setAuthor(event.target.value)}
+          onChange={(event) => {
+            setAuthor(event.target.value);
+            setSuccessMessage("");
+          }}
           placeholder="Enter your name"
         />
         {errors.author && <p className={styles.error}>{errors.author}</p>}
@@ -92,7 +98,10 @@ export const ReviewForm = ({ onSubmit }: Props) => {
           id="review-rating"
           className={styles.select}
           value={rating}
-          onChange={(event) => setRating(event.target.value)}
+          onChange={(event) => {
+            setRating(event.target.value);
+            setSuccessMessage("");
+          }}
         >
           <option value="5">5 - Excellent</option>
           <option value="4">4 - Very good</option>
@@ -111,12 +120,19 @@ export const ReviewForm = ({ onSubmit }: Props) => {
           id="review-comment"
           className={styles.textarea}
           value={comment}
-          onChange={(event) => setComment(event.target.value)}
+          onChange={(event) => {
+            setComment(event.target.value);
+            setSuccessMessage("");
+          }} 
           placeholder="Share your thoughts about this brand"
           rows={5}
         />
         {errors.comment && <p className={styles.error}>{errors.comment}</p>}
       </div>
+
+      {successMessage && (
+        <p className={styles.successMessage}>{successMessage}</p>
+      )}
 
       <button type="submit" className={styles.submitButton}>
         Submit review

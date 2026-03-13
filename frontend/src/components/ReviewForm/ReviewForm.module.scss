@@ -73,3 +73,9 @@
 .submitButton:hover {
   border-color: $color-border-hover;
 }
+
+.successMessage {
+  margin-top: $spacing-lg;
+  font-size: 0.9rem;
+  color: #067647;
+}
