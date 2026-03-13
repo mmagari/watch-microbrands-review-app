@@ -31,6 +31,7 @@ type SortOption =
   | "price-desc"
   | "rating-desc";
 
+
 export const HomePage = () => {
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
   const [selectedPriceRange, setSelectedPriceRange] = useState<string | null>(null);
@@ -167,11 +168,55 @@ export const HomePage = () => {
           </div>
         </aside>
 
-        <section className={styles.mainColumn}>
+                <section className={styles.mainColumn}>
+          <div className={styles.toolbar}>
+            <div className={styles.searchBox}>
+              <label htmlFor="brand-search" className={styles.searchLabel}>
+                Search
+              </label>
+              <input
+                id="brand-search"
+                type="text"
+                className={styles.searchInput}
+                placeholder="Search brands..."
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+              />
+            </div>
+
+            <div className={styles.sortBox}>
+              <label htmlFor="brand-sort" className={styles.searchLabel}>
+                Sort by
+              </label>
+              <select
+                id="brand-sort"
+                className={styles.sortSelect}
+                value={sortOption}
+                onChange={(event) => setSortOption(event.target.value as SortOption)}
+              >
+                <option value="rating-desc">Rating: high to low</option>
+                <option value="name-asc">Name: A to Z</option>
+                <option value="name-desc">Name: Z to A</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+              </select>
+            </div>
+          </div>
+
           <div className={styles.resultsHeader}>
             <p className={styles.resultsText}>
               Showing <strong>{filteredBrands.length}</strong> brand(s)
             </p>
+
+            {(selectedStyle || selectedPriceRange || searchTerm) && (
+              <button
+                type="button"
+                className={styles.clearButton}
+                onClick={clearFilters}
+              >
+                Reset all
+              </button>
+            )}
           </div>
 
           {filteredBrands.length > 0 ? (
