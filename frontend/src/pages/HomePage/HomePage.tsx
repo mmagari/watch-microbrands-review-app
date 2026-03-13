@@ -1,9 +1,13 @@
 import { useMemo, useState } from "react";
+import { ActiveFilters } from "../../components/ActiveFilters/ActiveFilters";
 import { BrandCard } from "../../components/BrandCard/BrandCard";
+import { BrandsToolbar } from "../../components/BrandsToolbar/BrandsToolbar";
+import { FilterSidebar } from "../../components/FilterSidebar/FilterSidebar";
+import { TopBrandsSidebar } from "../../components/TopBrandsSidebar/TopBrandsSidebar";
 import { brands } from "../../data/brands";
 import { reviews } from "../../data/reviews";
-import { getPriceBucket } from "../../utils/getPriceBucket";
 import { calculateAverageRating } from "../../utils/calculateAverageRating";
+import { getPriceBucket } from "../../utils/getPriceBucket";
 import styles from "./HomePage.module.scss";
 
 const styleOptions = [
@@ -115,80 +119,24 @@ export const HomePage = () => {
       </section>
 
       <div className={styles.layout}>
-        <aside className={styles.sidebar}>
-          <div className={styles.sidebarCard}>
-            <div className={styles.sidebarSection}>
-              <p className={styles.sidebarTitle}>Styles</p>
-              <div className={styles.tagList}>
-                {styleOptions.map((style) => (
-                  <button
-                    key={style}
-                    type="button"
-                    className={`${styles.tag} ${
-                      selectedStyle === style ? styles.tagActive : ""
-                    }`}
-                    onClick={() => handleStyleClick(style)}
-                  >
-                    {style}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.sidebarSection}>
-              <p className={styles.sidebarTitle}>Price ranges</p>
-              <div className={styles.tagList}>
-                {priceOptions.map((priceRange) => (
-                  <button
-                    key={priceRange}
-                    type="button"
-                    className={`${styles.tag} ${
-                      selectedPriceRange === priceRange ? styles.tagActive : ""
-                    }`}
-                    onClick={() => handlePriceClick(priceRange)}
-                  >
-                    {priceRange}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </aside>
+        <FilterSidebar
+          styleOptions={styleOptions}
+          priceOptions={priceOptions}
+          selectedStyle={selectedStyle}
+          selectedPriceRange={selectedPriceRange}
+          onStyleClick={handleStyleClick}
+          onPriceClick={handlePriceClick}
+          onClearFilters={clearFilters}
+          showClearButton={Boolean(selectedStyle || selectedPriceRange || searchTerm)}
+        />
 
         <section className={styles.mainColumn}>
-          <div className={styles.toolbar}>
-            <div className={styles.searchBox}>
-              <label htmlFor="brand-search" className={styles.searchLabel}>
-                Search
-              </label>
-              <input
-                id="brand-search"
-                type="text"
-                className={styles.searchInput}
-                placeholder="Search brands..."
-                value={searchTerm}
-                onChange={(event) => setSearchTerm(event.target.value)}
-              />
-            </div>
-
-            <div className={styles.sortBox}>
-              <label htmlFor="brand-sort" className={styles.searchLabel}>
-                Sort by
-              </label>
-              <select
-                id="brand-sort"
-                className={styles.sortSelect}
-                value={sortOption}
-                onChange={(event) => setSortOption(event.target.value as SortOption)}
-              >
-                <option value="rating-desc">Rating: high to low</option>
-                <option value="name-asc">Name: A to Z</option>
-                <option value="name-desc">Name: Z to A</option>
-                <option value="price-asc">Price: low to high</option>
-                <option value="price-desc">Price: high to low</option>
-              </select>
-            </div>
-          </div>
+          <BrandsToolbar
+            searchTerm={searchTerm}
+            sortOption={sortOption}
+            onSearchChange={setSearchTerm}
+            onSortChange={setSortOption}
+          />
 
           <div className={styles.resultsHeader}>
             <p className={styles.resultsText}>
@@ -206,27 +154,11 @@ export const HomePage = () => {
             )}
           </div>
 
-          {(selectedStyle || selectedPriceRange || searchTerm) && (
-            <div className={styles.activeFilters}>
-              {selectedStyle && (
-                <span className={styles.activeFilterBadge}>
-                  Style: {selectedStyle}
-                </span>
-              )}
-
-              {selectedPriceRange && (
-                <span className={styles.activeFilterBadge}>
-                  Price: {selectedPriceRange}
-                </span>
-              )}
-
-              {searchTerm && (
-                <span className={styles.activeFilterBadge}>
-                  Search: {searchTerm}
-                </span>
-              )}
-            </div>
-          )}
+          <ActiveFilters
+            selectedStyle={selectedStyle}
+            selectedPriceRange={selectedPriceRange}
+            searchTerm={searchTerm}
+          />
 
           {filteredBrands.length > 0 ? (
             <div className={styles.grid}>
@@ -244,21 +176,7 @@ export const HomePage = () => {
           )}
         </section>
 
-        <aside className={styles.sidebar}>
-          <div className={styles.sidebarCard}>
-            <div className={styles.sidebarSection}>
-              <p className={styles.sidebarTitle}>Top rated brands</p>
-              <div className={styles.topBrandList}>
-                {topBrands.map((brand) => (
-                  <div key={brand.id} className={styles.topBrandItem}>
-                    <span className={styles.topBrandName}>{brand.name}</span>
-                    <span className={styles.topBrandRating}>{brand.rating}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </aside>
+        <TopBrandsSidebar brands={topBrands} />
       </div>
     </main>
   );

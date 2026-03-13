@@ -37,7 +37,11 @@
 }
 
 .resultsHeader {
-  margin-bottom: $spacing-lg;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
 }
 
 .resultsText {
@@ -48,58 +52,6 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
-}
-
-.sidebar {
-  position: sticky;
-  top: 96px;
-  align-self: start;
-}
-
-.sidebarCard {
-  @include card;
-  @include card-padding;
-}
-
-.sidebarSection + .sidebarSection {
-  margin-top: $spacing-xl;
-}
-
-.sidebarTitle {
-  margin-bottom: $spacing-md;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: $color-text-primary;
-}
-
-.tagList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacing-sm;
-}
-
-.tag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 10px;
-  border: 1px solid $color-border-light;
-  border-radius: $radius-pill;
-  font-size: $font-size-sm;
-  color: $color-text-secondary;
-  background: $color-card-background;
-  cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-}
-
-.tag:hover {
-  border-color: $color-border-hover;
-  color: $color-text-primary;
-}
-
-.tagActive {
-  border-color: $color-text-primary;
-  color: $color-text-primary;
 }
 
 .clearButton {
@@ -114,28 +66,6 @@
 .clearButton:hover {
   border-color: $color-border-hover;
   color: $color-text-primary;
-}
-
-.topBrandList {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.topBrandItem {
-  display: flex;
-  justify-content: space-between;
-  gap: $spacing-md;
-  font-size: 0.9rem;
-  color: $color-text-secondary;
-}
-
-.topBrandName {
-  color: $color-text-primary;
-}
-
-.topBrandRating {
-  color: $color-text-muted;
 }
 
 .emptyState {
@@ -153,81 +83,11 @@
   color: $color-text-secondary;
 }
 
-.toolbar {
-  display: grid;
-  grid-template-columns: 1fr 240px;
-  gap: $spacing-lg;
-  margin-bottom: $spacing-lg;
-}
-
-.searchBox,
-.sortBox {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.searchLabel {
-  font-size: $font-size-sm;
-  color: $color-text-secondary;
-}
-
-.searchInput,
-.sortSelect {
-  height: 42px;
-  border: 1px solid $color-border-light;
-  border-radius: $radius-md;
-  padding: 0 12px;
-  background: $color-card-background;
-  color: $color-text-primary;
-}
-
-.searchInput:focus,
-.sortSelect:focus {
-  outline: none;
-  border-color: $color-border-hover;
-}
-
-.resultsHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: $spacing-md;
-  margin-bottom: $spacing-md;
-}
-
-.resultsText {
-  color: $color-text-secondary;
-}
-
-.activeFilters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacing-sm;
-  margin-bottom: $spacing-lg;
-}
-
-.activeFilterBadge {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border: 1px solid $color-border-light;
-  border-radius: $radius-pill;
-  font-size: $font-size-sm;
-  color: $color-text-secondary;
-  background: $color-card-background;
-}
-
 @include laptop-down {
   .layout {
     grid-template-columns: 1fr;
   }
-  .sidebar {
-    position: static;
-  }
-  .toolbar {
-    grid-template-columns: 1fr;
-  }
+
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
@@ -240,14 +100,17 @@
     padding-left: $spacing-lg;
     padding-right: $spacing-lg;
   }
+
   .title {
     font-size: 1.7rem;
   }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
   .resultsHeader {
     flex-direction: column;
     align-items: flex-start;
-  }
-  .grid {
-    grid-template-columns: 1fr;
   }
 }
