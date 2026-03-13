@@ -1,0 +1,75 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.form {
+  @include card;
+  @include card-padding;
+  margin-top: $spacing-xl;
+}
+
+.title {
+  margin-bottom: $spacing-lg;
+  font-size: 1.1rem;
+  color: $color-text-primary;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field + .field {
+  margin-top: $spacing-lg;
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.input,
+.select,
+.textarea {
+  border: 1px solid $color-border-light;
+  border-radius: $radius-md;
+  padding: 10px 12px;
+  background: $color-card-background;
+  color: $color-text-primary;
+}
+
+.input,
+.select {
+  height: 42px;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: $color-border-hover;
+}
+
+.error {
+  font-size: 0.8rem;
+  color: #b42318;
+}
+
+.submitButton {
+  margin-top: $spacing-xl;
+  border: 1px solid $color-border-light;
+  background: $color-card-background;
+  color: $color-text-primary;
+  border-radius: $radius-pill;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  border-color: $color-border-hover;
+}
