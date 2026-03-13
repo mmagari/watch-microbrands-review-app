@@ -219,6 +219,28 @@ export const HomePage = () => {
             )}
           </div>
 
+          {(selectedStyle || selectedPriceRange || searchTerm) && (
+            <div className={styles.activeFilters}>
+              {selectedStyle && (
+                <span className={styles.activeFilterBadge}>
+                  Style: {selectedStyle}
+                </span>
+              )}
+
+              {selectedPriceRange && (
+                <span className={styles.activeFilterBadge}>
+                  Price: {selectedPriceRange}
+                </span>
+              )}
+
+              {searchTerm && (
+                <span className={styles.activeFilterBadge}>
+                  Search: {searchTerm}
+                </span>
+              )}
+            </div>
+          )}
+
           {filteredBrands.length > 0 ? (
             <div className={styles.grid}>
               {filteredBrands.map((brand) => (
