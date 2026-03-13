@@ -35,3 +35,11 @@ export const saveStoredReviews = (reviews: Review[]): void => {
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
 };
+
+export const clearStoredReviews = (): void => {
+  if (!isBrowser) {
+    return;
+  }
+
+  localStorage.removeItem(STORAGE_KEY);
+};
