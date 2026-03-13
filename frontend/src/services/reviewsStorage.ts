@@ -2,7 +2,13 @@ import type { Review } from "../types/review";
 
 const STORAGE_KEY = "microbrand_reviews";
 
+const isBrowser = typeof window !== "undefined";
+
 export const loadStoredReviews = (): Review[] => {
+  if (!isBrowser) {
+    return [];
+  }
+
   const storedReviews = localStorage.getItem(STORAGE_KEY);
 
   if (!storedReviews) {
@@ -23,5 +29,9 @@ export const loadStoredReviews = (): Review[] => {
 };
 
 export const saveStoredReviews = (reviews: Review[]): void => {
+  if (!isBrowser) {
+    return;
+  }
+
   localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
 };
