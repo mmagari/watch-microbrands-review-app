@@ -31,7 +31,6 @@ type SortOption =
   | "price-desc"
   | "rating-desc";
 
-
 export const HomePage = () => {
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
   const [selectedPriceRange, setSelectedPriceRange] = useState<string | null>(null);
@@ -49,6 +48,10 @@ export const HomePage = () => {
       };
     });
   }, []);
+
+  const topBrands = [...brandsWithRating]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 5);
 
   const filteredBrands = useMemo(() => {
     const filtered = brandsWithRating.filter((brand) => {
@@ -85,10 +88,6 @@ export const HomePage = () => {
 
     return sorted;
   }, [brandsWithRating, selectedStyle, selectedPriceRange, searchTerm, sortOption]);
-
-  const topBrands = [...brandsWithRating]
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 5);
 
   const handleStyleClick = (style: string) => {
     setSelectedStyle((current) => (current === style ? null : style));
@@ -153,22 +152,10 @@ export const HomePage = () => {
                 ))}
               </div>
             </div>
-
-            {(selectedStyle || selectedPriceRange) && (
-              <div className={styles.sidebarSection}>
-                <button
-                  type="button"
-                  className={styles.clearButton}
-                  onClick={clearFilters}
-                >
-                  Clear filters
-                </button>
-              </div>
-            )}
           </div>
         </aside>
 
-                <section className={styles.mainColumn}>
+        <section className={styles.mainColumn}>
           <div className={styles.toolbar}>
             <div className={styles.searchBox}>
               <label htmlFor="brand-search" className={styles.searchLabel}>
