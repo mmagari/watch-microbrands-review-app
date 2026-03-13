@@ -100,6 +100,8 @@ export const HomePage = () => {
   const clearFilters = () => {
     setSelectedStyle(null);
     setSelectedPriceRange(null);
+    setSearchTerm("");
+    setSortOption("rating-desc");
   };
 
   return (
