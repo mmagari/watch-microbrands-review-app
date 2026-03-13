@@ -17,7 +17,7 @@ export const BrandCard = ({ brand }: Props) => {
 
         <h3 className={styles.name}>{brand.name}</h3>
         <p className={styles.meta}>{brand.country}</p>
-        <p className={styles.meta}>From ${brand.startingPriceUsd}</p>
+        <p className={styles.metaStrong}>From ${brand.startingPriceUsd}</p>
         <p className={styles.meta}>{brand.featuredModel}</p>
         <p className={styles.meta}>{brand.styles.join(", ")}</p>
 
