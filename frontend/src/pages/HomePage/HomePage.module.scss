@@ -153,15 +153,81 @@
   color: $color-text-secondary;
 }
 
+.toolbar {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.searchBox,
+.sortBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.searchLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.searchInput,
+.sortSelect {
+  height: 42px;
+  border: 1px solid $color-border-light;
+  border-radius: $radius-md;
+  padding: 0 12px;
+  background: $color-card-background;
+  color: $color-text-primary;
+}
+
+.searchInput:focus,
+.sortSelect:focus {
+  outline: none;
+  border-color: $color-border-hover;
+}
+
+.resultsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.resultsText {
+  color: $color-text-secondary;
+}
+
+.activeFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+}
+
+.activeFilterBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid $color-border-light;
+  border-radius: $radius-pill;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  background: $color-card-background;
+}
+
 @include laptop-down {
   .layout {
     grid-template-columns: 1fr;
   }
-
   .sidebar {
     position: static;
   }
-
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
@@ -174,11 +240,13 @@
     padding-left: $spacing-lg;
     padding-right: $spacing-lg;
   }
-
   .title {
     font-size: 1.7rem;
   }
-
+  .resultsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .grid {
     grid-template-columns: 1fr;
   }
