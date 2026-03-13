@@ -5,14 +5,14 @@ import { ReviewForm } from "../../components/ReviewForm/ReviewForm";
 import { RatingStars } from "../../components/RatingStars/RatingStars";
 import { brands } from "../../data/brands";
 import { reviews as initialReviews } from "../../data/reviews";
+import { getAllReviews, addReviewToStorage } from "../../services/reviewsService";
 import { calculateAverageRating } from "../../utils/calculateAverageRating";
 import { getPriceBucket } from "../../utils/getPriceBucket";
 import styles from "./BrandDetailsPage.module.scss";
 
 export const BrandDetailsPage = () => {
   const { id } = useParams();
-  const [reviews, setReviews] = useState(initialReviews);
-
+  const [reviews, setReviews] = useState(() => getAllReviews(initialReviews));
   const brand = brands.find((item) => item.id === id);
 
   const brandReviews = useMemo(() => {
@@ -37,7 +37,7 @@ export const BrandDetailsPage = () => {
     );
   }
 
-  const handleAddReview = ({
+    const handleAddReview = ({
     author,
     rating,
     comment,
@@ -55,7 +55,9 @@ export const BrandDetailsPage = () => {
       createdAt: new Date().toISOString().split("T")[0],
     };
 
-    setReviews((currentReviews) => [newReview, ...currentReviews]);
+    setReviews((currentReviews) =>
+      addReviewToStorage(newReview, currentReviews, initialReviews)
+    );
   };
 
   return (
