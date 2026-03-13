@@ -1,7 +1,19 @@
 @use "../../styles/variables" as *;
 
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .stars {
   color: $color-star;
   font-size: 0.95rem;
   letter-spacing: 2px;
+  line-height: 1;
+}
+
+.value {
+  font-size: 0.85rem;
+  color: $color-text-muted;
 }

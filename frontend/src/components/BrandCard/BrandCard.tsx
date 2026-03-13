@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import type { Brand } from "../../types/brand";
-import { getPriceBucket } from "../../utils/getPriceBucket";
 import { RatingStars } from "../RatingStars/RatingStars";
 import styles from "./BrandCard.module.scss";
 
