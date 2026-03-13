@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { Brand } from "../../types/brand";
 import styles from "./TopBrandsSidebar.module.scss";
 
@@ -15,12 +16,17 @@ export const TopBrandsSidebar = ({ brands }: Props) => {
       <div className={styles.sidebarCard}>
         <div className={styles.sidebarSection}>
           <p className={styles.sidebarTitle}>Top rated brands</p>
+
           <div className={styles.topBrandList}>
             {brands.map((brand) => (
-              <div key={brand.id} className={styles.topBrandItem}>
+              <Link
+                key={brand.id}
+                to={`/brand/${brand.id}`}
+                className={styles.topBrandItem}
+              >
                 <span className={styles.topBrandName}>{brand.name}</span>
-                <span className={styles.topBrandRating}>{brand.rating}</span>
-              </div>
+                <span className={styles.topBrandRating}>{brand.rating.toFixed(1)}</span>
+              </Link>
             ))}
           </div>
         </div>

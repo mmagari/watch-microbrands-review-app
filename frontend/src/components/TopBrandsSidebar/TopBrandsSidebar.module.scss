@@ -1,40 +1,20 @@
-@use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
-
-.sidebar {
-  position: sticky;
-  top: 96px;
-  align-self: start;
-}
-
-.sidebarCard {
-  @include card;
-  @include card-padding;
-}
-
-.sidebarSection + .sidebarSection {
-  margin-top: $spacing-xl;
-}
-
-.sidebarTitle {
-  margin-bottom: $spacing-md;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: $color-text-primary;
-}
-
-.topBrandList {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .topBrandItem {
   display: flex;
   justify-content: space-between;
   gap: $spacing-md;
   font-size: 0.9rem;
   color: $color-text-secondary;
+  padding: 6px 0;
+  border-bottom: 1px solid $color-border-light;
+  transition: color 0.2s ease;
+}
+
+.topBrandItem:last-child {
+  border-bottom: none;
+}
+
+.topBrandItem:hover {
+  color: $color-text-primary;
 }
 
 .topBrandName {
@@ -43,10 +23,4 @@
 
 .topBrandRating {
   color: $color-text-muted;
-}
-
-@include laptop-down {
-  .sidebar {
-    position: static;
-  }
 }
