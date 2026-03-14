@@ -6,6 +6,7 @@ import styles from "./BrandCard.module.scss";
 type Props = {
   brand: Brand & {
     rating: number;
+    reviewCount: number;
   };
 };
 
@@ -23,7 +24,15 @@ export const BrandCard = ({ brand }: Props) => {
 
         <div className={styles.rating}>
           <RatingStars rating={brand.rating} />
-          <small>{brand.rating > 0 ? `${brand.rating} / 5` : "No ratings yet"}</small>
+
+          {brand.reviewCount > 0 ? (
+            <small>
+              {brand.rating.toFixed(1)} ({brand.reviewCount} review
+              {brand.reviewCount > 1 ? "s" : ""})
+            </small>
+          ) : (
+            <small>No reviews yet</small>
+          )}
         </div>
       </article>
     </Link>

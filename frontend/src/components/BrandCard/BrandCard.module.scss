@@ -42,7 +42,14 @@
 
 .rating {
   margin-top: auto;
-  padding-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rating small {
+  font-size: 0.8rem;
+  color: $color-text-muted;
 }
 
 .metaStrong {

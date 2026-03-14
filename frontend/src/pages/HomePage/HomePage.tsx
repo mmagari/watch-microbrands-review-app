@@ -51,6 +51,7 @@ export const HomePage = () => {
       return {
         ...brand,
         rating,
+        reviewCount: brandReviews.length,
       };
     });
   }, [allReviews]);
