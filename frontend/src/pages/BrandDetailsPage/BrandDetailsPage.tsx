@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ReviewCard } from "../../components/ReviewCard/ReviewCard";
 import { ReviewForm } from "../../components/ReviewForm/ReviewForm";
@@ -14,6 +14,10 @@ export const BrandDetailsPage = () => {
   const { id } = useParams();
   const [reviews, setReviews] = useState(() => getAllReviews(initialReviews));
   const brand = brands.find((item) => item.id === id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const brandReviews = useMemo(() => {
     if (!brand) {
