@@ -14,8 +14,11 @@ export const BrandCard = ({ brand }: Props) => {
   return (
     <Link to={`/brand/${brand.id}`} className={styles.link}>
       <article className={styles.card}>
-        <img className={styles.image} src={brand.image} alt={brand.name} />
-
+        <img
+          className={styles.image}
+          src={brand.image || "https://placehold.co/600x400?text=Watch+Brand"}
+          alt={brand.name}
+        />
         <h3 className={styles.name}>{brand.name}</h3>
         <p className={styles.meta}>{brand.country}</p>
         <p className={styles.metaStrong}>From ${brand.startingPriceUsd}</p>
