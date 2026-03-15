@@ -143,10 +143,18 @@ export const HomePage = () => {
 
           <div className={styles.resultsHeader}>
             <p className={styles.resultsText}>
-              Showing <strong>{filteredBrands.length}</strong> brand(s)
+              Showing <strong>{filteredBrands.length}</strong> of{" "}
+              <strong>{brands.length}</strong> brands
             </p>
 
             {(selectedStyle || selectedPriceRange || searchTerm) && (
+              <span className={styles.filterIndicator}>
+                filters active
+              </span>
+            )}
+
+            {(selectedStyle || selectedPriceRange || searchTerm) && (
+              
               <button
                 type="button"
                 className={styles.clearButton}

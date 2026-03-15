@@ -97,6 +97,11 @@
   border-color: $color-border-hover;
 }
 
+.filterIndicator {
+  font-size: 0.8rem;
+  color: $color-text-muted;
+}
+
 @include laptop-down {
   .layout {
     grid-template-columns: 1fr;
