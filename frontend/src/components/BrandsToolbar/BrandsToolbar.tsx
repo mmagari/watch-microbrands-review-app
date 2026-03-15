@@ -33,6 +33,7 @@ export const BrandsToolbar = ({
           placeholder="Search brands..."
           value={searchTerm}
           onChange={(event) => onSearchChange(event.target.value)}
+          autoFocus
         />
       </div>
 
