@@ -126,6 +126,7 @@ export const ReviewForm = ({ onSubmit }: Props) => {
           }} 
           placeholder="Share your thoughts about this brand"
           rows={5}
+          maxLength={500}
         />
         {errors.comment && <p className={styles.error}>{errors.comment}</p>}
       </div>
