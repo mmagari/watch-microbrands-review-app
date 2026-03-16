@@ -102,6 +102,13 @@
   color: $color-text-muted;
 }
 
+.loading {
+  padding: 40px 0;
+  text-align: center;
+  color: $color-text-muted;
+  font-size: 0.9rem;
+}
+
 @include laptop-down {
   .layout {
     grid-template-columns: 1fr;

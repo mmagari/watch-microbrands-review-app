@@ -23,6 +23,7 @@ export const BrandCard = ({ brand }: Props) => {
         <p className={styles.meta}>{brand.country}</p>
         <p className={styles.metaStrong}>From ${brand.startingPriceUsd}</p>
         <p className={styles.meta}>{brand.featuredModel}</p>
+        <p className={styles.metaMuted}>{brand.reviewCount} review{brand.reviewCount !== 1 ? "s" : ""}</p>
         <p className={styles.meta}>{brand.styles.join(", ")}</p>
 
         <div className={styles.rating}>

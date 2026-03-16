@@ -42,7 +42,7 @@ export const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("rating-desc");
   const allReviews = useMemo(() => getAllReviews(initialReviews), []);
-
+  
   const brandsWithRating = useMemo(() => {
     return brands.map((brand) => {
       const brandReviews = allReviews.filter((review) => review.brandId === brand.id);
