@@ -34,7 +34,8 @@ type SortOption =
   | "name-desc"
   | "price-asc"
   | "price-desc"
-  | "rating-desc";
+  | "rating-desc"
+  | "popularity-desc";
 
 export const HomePage = () => {
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
@@ -90,6 +91,8 @@ export const HomePage = () => {
         case "rating-desc":
         default:
           return b.rating - a.rating;
+        case "popularity-desc":
+          return b.reviewCount - a.reviewCount;
       }
     });
 

@@ -5,7 +5,8 @@ type SortOption =
   | "name-desc"
   | "price-asc"
   | "price-desc"
-  | "rating-desc";
+  | "rating-desc"
+  | "popularity-desc";
 
 type Props = {
   searchTerm: string;
@@ -52,6 +53,7 @@ export const BrandsToolbar = ({
           <option value="name-desc">Name: Z to A</option>
           <option value="price-asc">Price: low to high</option>
           <option value="price-desc">Price: high to low</option>
+          <option value="popularity-desc">Popularity</option>
         </select>
       </div>
     </div>
