@@ -11,6 +11,10 @@
 
 .inner {
   @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-lg;
   padding-top: 18px;
   padding-bottom: 18px;
 }
@@ -19,4 +23,52 @@
   font-size: $font-size-md;
   font-weight: 600;
   color: $color-text-primary;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.navLink {
+  font-size: 0.95rem;
+  color: $color-text-secondary;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: $color-text-primary;
+}
+
+.cta {
+  border: 1px solid $color-border-light;
+  border-radius: $radius-pill;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  color: $color-text-primary;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.cta:hover {
+  border-color: $color-border-hover;
+  background: #fafafa;
+}
+
+@include laptop-down {
+  .nav {
+    display: none;
+  }
+}
+
+@include mobile-down {
+  .inner {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .cta {
+    display: none;
+  }
 }
