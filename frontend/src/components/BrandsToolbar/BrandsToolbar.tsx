@@ -1,12 +1,5 @@
+import type { SortOption } from "../../types/sortOption";
 import styles from "./BrandsToolbar.module.scss";
-
-type SortOption =
-  | "name-asc"
-  | "name-desc"
-  | "price-asc"
-  | "price-desc"
-  | "rating-desc"
-  | "popularity-desc";
 
 type Props = {
   searchTerm: string;
@@ -49,11 +42,11 @@ export const BrandsToolbar = ({
           onChange={(event) => onSortChange(event.target.value as SortOption)}
         >
           <option value="rating-desc">Rating: high to low</option>
+          <option value="popularity-desc">Popularity</option>
           <option value="name-asc">Name: A to Z</option>
           <option value="name-desc">Name: Z to A</option>
           <option value="price-asc">Price: low to high</option>
           <option value="price-desc">Price: high to low</option>
-          <option value="popularity-desc">Popularity</option>
         </select>
       </div>
     </div>
