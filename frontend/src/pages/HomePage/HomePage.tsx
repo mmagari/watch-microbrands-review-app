@@ -116,8 +116,7 @@ export const HomePage = () => {
 
   return (
     <main className={styles.page}>
-      <section className={styles.intro}>
-        <h1 className={styles.title}>Discover Watch Microbrands</h1>
+      <section className={styles.intro} id="filters">        <h1 className={styles.title}>Discover Watch Microbrands</h1>
         <p className={styles.subtitle}>
           Explore independent watch brands, browse styles and price ranges, and
           read community reviews in one clean directory.
@@ -136,7 +135,7 @@ export const HomePage = () => {
           showClearButton={Boolean(selectedStyle || selectedPriceRange || searchTerm)}
         />
 
-        <section className={styles.mainColumn}>
+        <section className={styles.mainColumn} id="brands">
           <BrandsToolbar
             searchTerm={searchTerm}
             sortOption={sortOption}

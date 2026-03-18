@@ -12,7 +12,7 @@ type Props = {
 
 export const TopBrandsSidebar = ({ brands }: Props) => {
   return (
-    <aside className={styles.sidebar}>
+    <aside className={styles.sidebar} id="top-rated">
       <div className={styles.sidebarCard}>
         <div className={styles.sidebarSection}>
           <p className={styles.sidebarTitle}>Top rated brands</p>
