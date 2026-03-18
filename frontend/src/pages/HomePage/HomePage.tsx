@@ -7,6 +7,7 @@ import { TopBrandsSidebar } from "../../components/TopBrandsSidebar/TopBrandsSid
 import { brands } from "../../data/brands";
 import { reviews as initialReviews } from "../../data/reviews";
 import { getAllReviews } from "../../services/reviewsService";
+import type { SortOption } from "../../types/sortOption";
 import { calculateAverageRating } from "../../utils/calculateAverageRating";
 import { getPriceBucket } from "../../utils/getPriceBucket";
 import styles from "./HomePage.module.scss";
@@ -29,21 +30,14 @@ const priceOptions = [
   "$1500-$2000",
 ];
 
-type SortOption =
-  | "name-asc"
-  | "name-desc"
-  | "price-asc"
-  | "price-desc"
-  | "rating-desc"
-  | "popularity-desc";
-
 export const HomePage = () => {
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
   const [selectedPriceRange, setSelectedPriceRange] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("rating-desc");
-  const allReviews = useMemo(() => getAllReviews(initialReviews), []);
-  
+
+  const allReviews = getAllReviews(initialReviews);
+
   const brandsWithRating = useMemo(() => {
     return brands.map((brand) => {
       const brandReviews = allReviews.filter((review) => review.brandId === brand.id);
@@ -64,7 +58,9 @@ export const HomePage = () => {
   const filteredBrands = useMemo(() => {
     const filtered = brandsWithRating.filter((brand) => {
       const matchesStyle = selectedStyle
-        ? brand.styles.some((style) => style.toLowerCase() === selectedStyle.toLowerCase())
+        ? brand.styles.some(
+            (style) => style.toLowerCase() === selectedStyle.toLowerCase()
+          )
         : true;
 
       const matchesPriceRange = selectedPriceRange
@@ -78,7 +74,7 @@ export const HomePage = () => {
       return matchesStyle && matchesPriceRange && matchesSearch;
     });
 
-    const sorted = [...filtered].sort((a, b) => {
+    return [...filtered].sort((a, b) => {
       switch (sortOption) {
         case "name-asc":
           return a.name.localeCompare(b.name);
@@ -88,15 +84,13 @@ export const HomePage = () => {
           return a.startingPriceUsd - b.startingPriceUsd;
         case "price-desc":
           return b.startingPriceUsd - a.startingPriceUsd;
+        case "popularity-desc":
+          return b.reviewCount - a.reviewCount;
         case "rating-desc":
         default:
           return b.rating - a.rating;
-        case "popularity-desc":
-          return b.reviewCount - a.reviewCount;
       }
     });
-
-    return sorted;
   }, [brandsWithRating, selectedStyle, selectedPriceRange, searchTerm, sortOption]);
 
   const handleStyleClick = (style: string) => {
@@ -113,6 +107,12 @@ export const HomePage = () => {
     setSearchTerm("");
     setSortOption("rating-desc");
   };
+
+  const activeFiltersCount = [
+    selectedStyle,
+    selectedPriceRange,
+    searchTerm.trim() ? searchTerm : null,
+  ].filter(Boolean).length;
 
   return (
     <main className={styles.page}>
@@ -150,14 +150,13 @@ export const HomePage = () => {
               <strong>{brands.length}</strong> brands
             </p>
 
-            {(selectedStyle || selectedPriceRange || searchTerm) && (
+            {activeFiltersCount > 0 && (
               <span className={styles.filterIndicator}>
-                filters active
+                {activeFiltersCount} filter{activeFiltersCount > 1 ? "s" : ""} active
               </span>
             )}
 
             {(selectedStyle || selectedPriceRange || searchTerm) && (
-              
               <button
                 type="button"
                 className={styles.clearButton}
