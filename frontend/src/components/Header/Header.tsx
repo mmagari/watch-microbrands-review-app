@@ -38,7 +38,7 @@ export const Header = () => {
 
         <button
           type="button"
-          className={styles.menuButton}
+          className={`${styles.menuButton} ${isMenuOpen ? styles.menuButtonOpen : ""}`}
           onClick={handleToggleMenu}
           aria-label="Toggle navigation menu"
           aria-expanded={isMenuOpen}
@@ -49,7 +49,7 @@ export const Header = () => {
         </button>
       </div>
 
-      {isMenuOpen && (
+      <div className={`${styles.mobileMenuWrap} ${isMenuOpen ? styles.mobileMenuWrapOpen : ""}`}>
         <div className={styles.mobileMenu}>
           <a href="#filters" className={styles.mobileLink} onClick={handleCloseMenu}>
             Filters
@@ -61,7 +61,7 @@ export const Header = () => {
             Brands
           </a>
         </div>
-      )}
+      </div>
     </header>
   );
 };

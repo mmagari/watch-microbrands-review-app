@@ -98,14 +98,18 @@
     display: flex;
   }
 
-  .mobileMenu {
-    @include container;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-top: 0;
-    padding-bottom: 18px;
-  }
+.mobileMenu {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+}
 
   .mobileLink {
     font-size: 0.95rem;
@@ -115,6 +119,12 @@
   .mobileLink:hover {
     color: $color-text-primary;
   }
+}
+
+.mobileMenuOpen {
+  max-height: 200px;
+  opacity: 1;
+  padding-bottom: 18px;
 }
 
 @include mobile-down {
