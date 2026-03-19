@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ActiveFilters } from "../../components/ActiveFilters/ActiveFilters";
 import { BrandCard } from "../../components/BrandCard/BrandCard";
 import { BrandsToolbar } from "../../components/BrandsToolbar/BrandsToolbar";
@@ -31,12 +32,32 @@ const priceOptions = [
 ];
 
 export const HomePage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
   const [selectedPriceRange, setSelectedPriceRange] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("rating-desc");
 
   const allReviews = getAllReviews(initialReviews);
+
+    useEffect(() => {
+    const sectionId = location.state?.scrollTo;
+
+    if (!sectionId) {
+        return;
+      }
+
+      const element = document.getElementById(sectionId);
+
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 50);
+      }
+
+      navigate(location.pathname, { replace: true, state: null });
+    }, [location, navigate]);
 
   const brandsWithRating = useMemo(() => {
     return brands.map((brand) => {
