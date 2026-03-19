@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./Header.module.scss";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleToggleMenu = () => {
     setIsMenuOpen((current) => !current);
@@ -11,6 +13,21 @@ export const Header = () => {
 
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    handleCloseMenu();
+
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+      return;
+    }
+
+    const element = document.getElementById(sectionId);
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
@@ -21,20 +38,36 @@ export const Header = () => {
         </Link>
 
         <nav className={styles.nav}>
-          <a href="#filters" className={styles.navLink}>
+          <button
+            type="button"
+            className={styles.navButton}
+            onClick={() => scrollToSection("filters")}
+          >
             Filters
-          </a>
-          <a href="#top-rated" className={styles.navLink}>
+          </button>
+          <button
+            type="button"
+            className={styles.navButton}
+            onClick={() => scrollToSection("top-rated")}
+          >
             Top Rated
-          </a>
-          <a href="#brands" className={styles.navLink}>
+          </button>
+          <button
+            type="button"
+            className={styles.navButton}
+            onClick={() => scrollToSection("brands")}
+          >
             Brands
-          </a>
+          </button>
         </nav>
 
-        <a href="#brands" className={styles.cta}>
+        <button
+          type="button"
+          className={styles.cta}
+          onClick={() => scrollToSection("brands")}
+        >
           Browse Brands
-        </a>
+        </button>
 
         <button
           type="button"
@@ -51,15 +84,27 @@ export const Header = () => {
 
       <div className={`${styles.mobileMenuWrap} ${isMenuOpen ? styles.mobileMenuWrapOpen : ""}`}>
         <div className={styles.mobileMenu}>
-          <a href="#filters" className={styles.mobileLink} onClick={handleCloseMenu}>
+          <button
+            type="button"
+            className={styles.mobileLink}
+            onClick={() => scrollToSection("filters")}
+          >
             Filters
-          </a>
-          <a href="#top-rated" className={styles.mobileLink} onClick={handleCloseMenu}>
+          </button>
+          <button
+            type="button"
+            className={styles.mobileLink}
+            onClick={() => scrollToSection("top-rated")}
+          >
             Top Rated
-          </a>
-          <a href="#brands" className={styles.mobileLink} onClick={handleCloseMenu}>
+          </button>
+          <button
+            type="button"
+            className={styles.mobileLink}
+            onClick={() => scrollToSection("brands")}
+          >
             Brands
-          </a>
+          </button>
         </div>
       </div>
     </header>
