@@ -32,16 +32,6 @@
   gap: $spacing-lg;
 }
 
-.navLink {
-  font-size: 0.95rem;
-  color: $color-text-secondary;
-  transition: color 0.2s ease;
-}
-
-.navLink:hover {
-  color: $color-text-primary;
-}
-
 .cta {
   border: 1px solid $color-border-light;
   border-radius: $radius-pill;
@@ -148,14 +138,32 @@
   }
 
   .mobileLink {
-    font-size: 0.95rem;
-    color: $color-text-secondary;
-    padding: 2px 0;
+  border: none;
+  background: transparent;
+  padding: 2px 0;
+  text-align: left;
+  font-size: 0.95rem;
+  color: $color-text-secondary;
+  cursor: pointer;
   }
 
   .mobileLink:hover {
     color: $color-text-primary;
   }
+}
+
+.navButton {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 0.95rem;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.navButton:hover {
+  color: $color-text-primary;
 }
 
 @include mobile-down {
