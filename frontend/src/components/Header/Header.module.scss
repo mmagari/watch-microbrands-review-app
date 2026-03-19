@@ -58,16 +58,14 @@
 
 .menuButton {
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  width: 40px;
-  height: 40px;
+  position: relative;
+  width: 42px;
+  height: 42px;
   border: 1px solid $color-border-light;
   border-radius: $radius-md;
   background: $color-card-background;
   cursor: pointer;
-  padding: 0 10px;
+  flex-shrink: 0;
 }
 
 .menuButton:hover {
@@ -75,13 +73,42 @@
 }
 
 .menuLine {
-  width: 100%;
+  position: absolute;
+  left: 10px;
+  width: 20px;
   height: 1.5px;
   background: $color-text-primary;
   border-radius: 999px;
+  transition: transform 0.25s ease, opacity 0.2s ease, top 0.25s ease;
 }
 
-.mobileMenu {
+.menuLine:nth-child(1) {
+  top: 14px;
+}
+
+.menuLine:nth-child(2) {
+  top: 20px;
+}
+
+.menuLine:nth-child(3) {
+  top: 26px;
+}
+
+.menuButtonOpen .menuLine:nth-child(1) {
+  top: 20px;
+  transform: rotate(45deg);
+}
+
+.menuButtonOpen .menuLine:nth-child(2) {
+  opacity: 0;
+}
+
+.menuButtonOpen .menuLine:nth-child(3) {
+  top: 20px;
+  transform: rotate(-45deg);
+}
+
+.mobileMenuWrap {
   display: none;
 }
 
@@ -95,36 +122,40 @@
   }
 
   .menuButton {
-    display: flex;
+    display: block;
   }
 
-.mobileMenu {
-  @include container;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  .mobileMenuWrap {
+    @include container;
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.28s ease, opacity 0.2s ease, padding-bottom 0.28s ease;
+    padding-bottom: 0;
+  }
 
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
+  .mobileMenuWrapOpen {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    padding-bottom: 18px;
+  }
 
-  transition: max-height 0.25s ease, opacity 0.2s ease;
-}
+  .mobileMenu {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 
   .mobileLink {
     font-size: 0.95rem;
     color: $color-text-secondary;
+    padding: 2px 0;
   }
 
   .mobileLink:hover {
     color: $color-text-primary;
   }
-}
-
-.mobileMenuOpen {
-  max-height: 200px;
-  opacity: 1;
-  padding-bottom: 18px;
 }
 
 @include mobile-down {
