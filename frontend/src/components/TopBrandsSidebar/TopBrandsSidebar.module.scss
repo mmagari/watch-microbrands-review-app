@@ -1,5 +1,9 @@
 @use "../../styles/variables" as *;
 
+#top-rated{
+  scroll-margin-top: 90px;
+}
+
 .topBrandItem {
   display: flex;
   justify-content: space-between;

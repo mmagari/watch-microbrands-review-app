@@ -10,6 +10,7 @@
 .intro {
   margin-bottom: $spacing-2xl;
   max-width: 720px;
+  scroll-margin-top: 90px;
 }
 
 .title {
@@ -34,6 +35,7 @@
 
 .mainColumn {
   min-width: 0;
+  scroll-margin-top: 90px;
 }
 
 .resultsHeader {
