@@ -15,12 +15,13 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease,
   border-color 0.2s ease;
   cursor: pointer;
+  will-change: transform;
 }
 
 .card:hover {
   border-color: $color-border-hover;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
 
 .image {
