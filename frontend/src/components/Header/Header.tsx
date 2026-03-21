@@ -33,7 +33,14 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Link to="/" className={styles.logo} onClick={handleCloseMenu}>
+        <Link
+            to="/"
+            className={styles.logo}
+            onClick={() => {
+              handleCloseMenu();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
           Microbrand Watch Directory
         </Link>
 

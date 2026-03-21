@@ -26,7 +26,13 @@ export const BrandCard = ({ brand }: Props) => {
         <p className={styles.metaStrong}>From ${brand.startingPriceUsd}</p>
         <p className={styles.meta}>{getPriceBucket(brand.startingPriceUsd)}</p>
         <p className={styles.meta}>{brand.featuredModel}</p>
-        <p className={styles.meta}>{brand.styles.join(", ")}</p>
+        <div className={styles.styles}>
+          {brand.styles.map((style) => (
+            <span key={style} className={styles.styleTag}>
+              {style}
+            </span>
+          ))}
+        </div>
         <p className={styles.metaMuted}>
           {brand.reviewCount} review{brand.reviewCount !== 1 ? "s" : ""}
         </p>
