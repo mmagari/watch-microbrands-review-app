@@ -8,7 +8,9 @@
 }
 
 .intro {
-  margin-bottom: $spacing-2xl;
+  border-bottom: 1px solid $color-border-light;
+  padding-bottom: $spacing-lg;
+  margin-bottom: $spacing-lg;
   max-width: 720px;
   scroll-margin-top: 90px;
 }
