@@ -24,7 +24,7 @@ export const BrandsToolbar = ({
           id="brand-search"
           type="text"
           className={styles.input}
-          placeholder="Search brands..."
+          placeholder="Search brands (e.g. Baltic, Lorier...)"
           value={searchTerm}
           onChange={(event) => onSearchChange(event.target.value)}
           autoFocus
