@@ -37,7 +37,7 @@ export const BrandCard = ({ brand }: Props) => {
           {brand.reviewCount} review{brand.reviewCount !== 1 ? "s" : ""}
         </p>
 
-        <div className={styles.rating}>
+        <div className={styles.rating} title={`${brand.rating.toFixed(1)} rating`}>
           <RatingStars rating={brand.rating} />
           <small>{brand.rating > 0 ? `${brand.rating.toFixed(1)} / 5` : "No reviews yet"}</small>
         </div>
