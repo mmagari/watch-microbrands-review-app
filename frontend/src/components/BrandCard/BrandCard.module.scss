@@ -67,3 +67,18 @@
   color: $color-text-primary;
   font-weight: 500;
 }
+
+.styles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.styleTag {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border: 1px solid $color-border-light;
+  border-radius: $radius-pill;
+  color: $color-text-secondary;
+}
