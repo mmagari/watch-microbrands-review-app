@@ -1,5 +1,19 @@
 import type { Brand } from "../types/brand";
 
+// images
+import balticImage from "../assets/brands/BalticMain.png";
+import lorierImage from "../assets/brands/LorierMain.webp";
+import traskaImage from "../assets/brands/TraskaMain.webp";
+import farerImage from "../assets/brands/FarerMain.webp";
+import zelosImage from "../assets/brands/ZelosMain.jpg";
+import brewImage from "../assets/brands/BrewMain.jpg";
+import nodusImage from "../assets/brands/NodusMain.webp";
+import christopherWardImage from "../assets/brands/CHWMain.jpg";
+import studioUnderd0gImage from "../assets/brands/STUMain.webp";
+import henryArcherImage from "../assets/brands/HAMain.jpg";
+import wolbrookImage from "../assets/brands/WolbrookMain.webp";
+import vaerImage from "../assets/brands/VaerMain.webp";
+
 export const brands: Brand[] = [
   {
     id: "baltic",
@@ -10,7 +24,7 @@ export const brands: Brand[] = [
     featuredModel: "Aquascaphe",
     description:
       "French microbrand known for vintage-inspired mechanical watches with clean proportions and strong enthusiast appeal.",
-    image: "https://placehold.co/600x400?text=Baltic",
+    image: balticImage,
   },
   {
     id: "lorier",
@@ -21,7 +35,7 @@ export const brands: Brand[] = [
     featuredModel: "Neptune",
     description:
       "New York-based brand focused on classic mid-century styling, compact cases and versatile everyday watches.",
-    image: "https://placehold.co/600x400?text=Lorier",
+    image: lorierImage,
   },
   {
     id: "traska",
@@ -32,7 +46,7 @@ export const brands: Brand[] = [
     featuredModel: "Commuter",
     description:
       "American microbrand known for practical daily-wear watches and hardened steel cases built for real use.",
-    image: "https://placehold.co/600x400?text=Traska",
+    image: traskaImage,
   },
   {
     id: "farer",
@@ -43,7 +57,7 @@ export const brands: Brand[] = [
     featuredModel: "Lander",
     description:
       "British-designed, Swiss-made independent brand known for bold colours, adventurous design and broad category coverage.",
-    image: "https://placehold.co/600x400?text=Farer",
+    image: farerImage,
   },
   {
     id: "zelos",
@@ -54,7 +68,7 @@ export const brands: Brand[] = [
     featuredModel: "Swordfish",
     description:
       "Singapore-based enthusiast favourite known for daring materials, limited runs and great value sport watches.",
-    image: "https://placehold.co/600x400?text=Zelos",
+    image: zelosImage,
   },
   {
     id: "brew",
@@ -65,7 +79,7 @@ export const brands: Brand[] = [
     featuredModel: "Metric",
     description:
       "Design-led New York microbrand with compact retro aesthetics inspired by espresso machines and café culture.",
-    image: "https://placehold.co/600x400?text=Brew",
+    image: brewImage,
   },
   {
     id: "vaer",
@@ -76,7 +90,7 @@ export const brands: Brand[] = [
     featuredModel: "Meridian",
     description:
       "Accessible American brand with a wide range of quartz, solar and automatic field, diver and GMT watches.",
-    image: "https://placehold.co/600x400?text=Vaer",
+    image: vaerImage,
   },
   {
     id: "henry-archer",
@@ -87,7 +101,7 @@ export const brands: Brand[] = [
     featuredModel: "Vesterhav",
     description:
       "Danish brand blending colourful dials, Bauhaus-inspired design cues and strong specs at approachable prices.",
-    image: "https://placehold.co/600x400?text=Henry+Archer",
+    image: henryArcherImage,
   },
   {
     id: "wolbrook",
@@ -98,7 +112,7 @@ export const brands: Brand[] = [
     featuredModel: "Skindiver",
     description:
       "Heritage-inspired French brand offering accessible skindivers and vintage-flavoured chronographs.",
-    image: "https://placehold.co/600x400?text=Wolbrook",
+    image: wolbrookImage,
   },
   {
     id: "christopher-ward",
@@ -109,7 +123,7 @@ export const brands: Brand[] = [
     featuredModel: "The Twelve",
     description:
       "Independent British-designed, Swiss-made brand with a broad catalogue and many strong-value models under $2000.",
-    image: "https://placehold.co/600x400?text=Christopher+Ward",
+    image: christopherWardImage,
   },
   {
     id: "nodus",
@@ -120,7 +134,7 @@ export const brands: Brand[] = [
     featuredModel: "Sector II",
     description:
       "Los Angeles microbrand focused on robust tool and sport watches with a practical, enthusiast-first design approach.",
-    image: "https://placehold.co/600x400?text=Nodus",
+    image: nodusImage,
   },
   {
     id: "studio-underd0g",
@@ -131,6 +145,6 @@ export const brands: Brand[] = [
     featuredModel: "01Series",
     description:
       "Playful British independent brand known for colourful dials, compact chronographs and a very distinctive identity.",
-    image: "https://placehold.co/600x400?text=Studio+Underd0g",
+    image: studioUnderd0gImage,
   },
 ];
