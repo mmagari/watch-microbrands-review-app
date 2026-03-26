@@ -1,24 +1,65 @@
+import { supabase } from "../lib/supabase";
 import type { Review } from "../types/review";
-import { loadStoredReviews, saveStoredReviews } from "./reviewsStorage";
 
-export const getAllReviews = (initialReviews: Review[]): Review[] => {
-  const storedReviews = loadStoredReviews();
-
-  return [...storedReviews, ...initialReviews];
+type ReviewRow = {
+  id: string;
+  brand_id: string;
+  author: string;
+  rating: number;
+  comment: string;
+  created_at: string;
 };
 
-export const addReviewToStorage = (
-  newReview: Review,
-  currentReviews: Review[],
-  initialReviews: Review[]
-): Review[] => {
-  const updatedReviews = [newReview, ...currentReviews];
+type NewReviewInput = {
+  brandId: string;
+  author: string;
+  rating: number;
+  comment: string;
+};
 
-  const customReviewsOnly = updatedReviews.filter(
-    (review) => !initialReviews.some((initialReview) => initialReview.id === review.id)
-  );
+const mapReviewRowToReview = (row: ReviewRow): Review => {
+  return {
+    id: row.id,
+    brandId: row.brand_id,
+    author: row.author,
+    rating: row.rating,
+    comment: row.comment,
+    createdAt: row.created_at,
+  };
+};
 
-  saveStoredReviews(customReviewsOnly);
+export const getAllReviews = async (initialReviews: Review[]): Promise<Review[]> => {
+  const { data, error } = await supabase
+    .from("reviews")
+    .select("*")
+    .order("created_at", { ascending: false });
 
-  return updatedReviews;
+  if (error) {
+    console.error("Failed to load reviews from Supabase:", error);
+    return initialReviews;
+  }
+
+  const dbReviews = ((data ?? []) as ReviewRow[]).map(mapReviewRowToReview);
+
+  return [...dbReviews, ...initialReviews];
+};
+
+export const addReview = async (newReview: NewReviewInput): Promise<Review> => {
+  const { data, error } = await supabase
+    .from("reviews")
+    .insert({
+      brand_id: newReview.brandId,
+      author: newReview.author,
+      rating: newReview.rating,
+      comment: newReview.comment,
+    })
+    .select()
+    .single();
+
+  if (error || !data) {
+    console.error("Failed to add review:", error);
+    throw new Error("Failed to add review");
+  }
+
+  return mapReviewRowToReview(data as ReviewRow);
 };
