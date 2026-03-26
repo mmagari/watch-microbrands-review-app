@@ -3,7 +3,7 @@ import type { Brand } from "../../types/brand";
 import styles from "./TopBrandsSidebar.module.scss";
 
 type TopBrand = Brand & {
-  rating: number;
+  averageRating: number;
 };
 
 type Props = {
@@ -25,7 +25,7 @@ export const TopBrandsSidebar = ({ brands }: Props) => {
                 className={styles.topBrandItem}
               >
                 <span className={styles.topBrandName}>{brand.name}</span>
-                <span className={styles.topBrandRating}>{brand.rating.toFixed(1)}</span>
+                <span className={styles.topBrandRating}>{brand.averageRating.toFixed(1)}</span>
               </Link>
             ))}
           </div>
