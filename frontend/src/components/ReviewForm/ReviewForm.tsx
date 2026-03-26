@@ -8,7 +8,8 @@ type NewReview = {
 };
 
 type Props = {
-  onSubmit: (review: NewReview) => void;
+  onSubmit: (review: NewReview) => Promise<void>;
+  isSubmitting?: boolean;
 };
 
 type FormErrors = {
@@ -17,7 +18,10 @@ type FormErrors = {
   comment?: string;
 };
 
-export const ReviewForm = ({ onSubmit }: Props) => {
+export const ReviewForm = ({
+  onSubmit,
+  isSubmitting = false,
+}: Props) => {
   const [author, setAuthor] = useState("");
   const [rating, setRating] = useState("5");
   const [comment, setComment] = useState("");
@@ -47,25 +51,28 @@ export const ReviewForm = ({ onSubmit }: Props) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!validate()) {
       return;
     }
 
-    onSubmit({
-      author: author.trim(),
-      rating: Number(rating),
-      comment: comment.trim(),
-    });
-    
-    setSuccessMessage("Your review has been added.");
+    try {
+      await onSubmit({
+        author: author.trim(),
+        rating: Number(rating),
+        comment: comment.trim(),
+      });
 
-    setAuthor("");
-    setRating("5");
-    setComment("");
-    setErrors({});
+      setSuccessMessage("Your review has been added.");
+      setAuthor("");
+      setRating("5");
+      setComment("");
+      setErrors({});
+    } catch {
+      setSuccessMessage("");
+    }
   };
 
   return (
@@ -86,6 +93,7 @@ export const ReviewForm = ({ onSubmit }: Props) => {
             setSuccessMessage("");
           }}
           placeholder="Enter your name"
+          disabled={isSubmitting}
         />
         {errors.author && <p className={styles.error}>{errors.author}</p>}
       </div>
@@ -102,6 +110,7 @@ export const ReviewForm = ({ onSubmit }: Props) => {
             setRating(event.target.value);
             setSuccessMessage("");
           }}
+          disabled={isSubmitting}
         >
           <option value="5">5 - Excellent</option>
           <option value="4">4 - Very good</option>
@@ -123,10 +132,11 @@ export const ReviewForm = ({ onSubmit }: Props) => {
           onChange={(event) => {
             setComment(event.target.value);
             setSuccessMessage("");
-          }} 
+          }}
           placeholder="Share your thoughts about this brand"
           rows={5}
           maxLength={500}
+          disabled={isSubmitting}
         />
         {errors.comment && <p className={styles.error}>{errors.comment}</p>}
       </div>
@@ -135,8 +145,12 @@ export const ReviewForm = ({ onSubmit }: Props) => {
         <p className={styles.successMessage}>{successMessage}</p>
       )}
 
-      <button type="submit" className={styles.submitButton}>
-        Submit review
+      <button
+        type="submit"
+        className={styles.submitButton}
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? "Submitting..." : "Submit review"}
       </button>
     </form>
   );

@@ -5,18 +5,42 @@ import { ReviewForm } from "../../components/ReviewForm/ReviewForm";
 import { RatingStars } from "../../components/RatingStars/RatingStars";
 import { brands } from "../../data/brands";
 import { reviews as initialReviews } from "../../data/reviews";
-import { getAllReviews, addReviewToStorage } from "../../services/reviewsService";
+import { getAllReviews, addReview } from "../../services/reviewsService";
+import type { Review } from "../../types/review";
 import { calculateAverageRating } from "../../utils/calculateAverageRating";
 import { getPriceBucket } from "../../utils/getPriceBucket";
 import styles from "./BrandDetailsPage.module.scss";
 
 export const BrandDetailsPage = () => {
   const { id } = useParams();
-  const [reviews, setReviews] = useState(() => getAllReviews(initialReviews));
   const brand = brands.find((item) => item.id === id);
+
+  const [reviews, setReviews] = useState<Review[]>(initialReviews);
+  const [loadingReviews, setLoadingReviews] = useState(true);
+  const [reviewsError, setReviewsError] = useState("");
+  const [isSubmittingReview, setIsSubmittingReview] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const loadReviews = async () => {
+      try {
+        setLoadingReviews(true);
+        setReviewsError("");
+
+        const allReviews = await getAllReviews(initialReviews);
+        setReviews(allReviews);
+      } catch (error) {
+        console.error(error);
+        setReviewsError("Failed to load reviews.");
+      } finally {
+        setLoadingReviews(false);
+      }
+    };
+
+    loadReviews();
   }, []);
 
   const brandReviews = useMemo(() => {
@@ -33,7 +57,9 @@ export const BrandDetailsPage = () => {
     return (
       <main className={styles.page}>
         <h1>Brand not found</h1>
-        <p className={styles.notFoundText}>We couldn’t find the brand you’re looking for.</p>
+        <p className={styles.notFoundText}>
+          We couldn’t find the brand you’re looking for.
+        </p>
         <Link to="/" className={styles.backLink}>
           Go back to homepage
         </Link>
@@ -41,7 +67,7 @@ export const BrandDetailsPage = () => {
     );
   }
 
-    const handleAddReview = ({
+  const handleAddReview = async ({
     author,
     rating,
     comment,
@@ -50,18 +76,25 @@ export const BrandDetailsPage = () => {
     rating: number;
     comment: string;
   }) => {
-    const newReview = {
-      id: `review-${Date.now()}`,
-      brandId: brand.id,
-      author,
-      rating,
-      comment,
-      createdAt: new Date().toISOString().split("T")[0],
-    };
+    try {
+      setIsSubmittingReview(true);
+      setReviewsError("");
 
-    setReviews((currentReviews) =>
-      addReviewToStorage(newReview, currentReviews, initialReviews)
-    );
+      const createdReview = await addReview({
+        brandId: brand.id,
+        author,
+        rating,
+        comment,
+      });
+
+      setReviews((currentReviews) => [createdReview, ...currentReviews]);
+    } catch (error) {
+      console.error(error);
+      setReviewsError("Failed to add review.");
+      throw error;
+    } finally {
+      setIsSubmittingReview(false);
+    }
   };
 
   return (
@@ -102,7 +135,11 @@ export const BrandDetailsPage = () => {
         <section className={styles.reviewsSection}>
           <h2>Rating & Reviews</h2>
 
-          {brandReviews.length > 0 ? (
+          {loadingReviews ? (
+            <p>Loading reviews...</p>
+          ) : reviewsError ? (
+            <p>{reviewsError}</p>
+          ) : brandReviews.length > 0 ? (
             <>
               <p>
                 <strong>Average rating:</strong> {averageRating} / 5
@@ -128,7 +165,10 @@ export const BrandDetailsPage = () => {
           )}
         </section>
 
-        <ReviewForm onSubmit={handleAddReview} />
+        <ReviewForm
+          onSubmit={handleAddReview}
+          isSubmitting={isSubmittingReview}
+        />
       </article>
     </main>
   );

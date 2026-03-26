@@ -6,8 +6,8 @@ import styles from "./BrandCard.module.scss";
 
 type Props = {
   brand: Brand & {
-    rating: number;
-    reviewCount: number;
+    averageRating: number;
+    reviewsCount: number;
   };
 };
 
@@ -26,6 +26,7 @@ export const BrandCard = ({ brand }: Props) => {
         <p className={styles.metaStrong}>From ${brand.startingPriceUsd}</p>
         <p className={styles.meta}>{getPriceBucket(brand.startingPriceUsd)}</p>
         <p className={styles.meta}>{brand.featuredModel}</p>
+
         <div className={styles.styles}>
           {brand.styles.map((style) => (
             <span key={style} className={styles.styleTag}>
@@ -33,13 +34,21 @@ export const BrandCard = ({ brand }: Props) => {
             </span>
           ))}
         </div>
+
         <p className={styles.metaMuted}>
-          {brand.reviewCount} review{brand.reviewCount !== 1 ? "s" : ""}
+          {brand.reviewsCount} review{brand.reviewsCount !== 1 ? "s" : ""}
         </p>
 
-        <div className={styles.rating} title={`${brand.rating.toFixed(1)} rating`}>
-          <RatingStars rating={brand.rating} />
-          <small>{brand.rating > 0 ? `${brand.rating.toFixed(1)} / 5` : "No reviews yet"}</small>
+        <div
+          className={styles.rating}
+          title={`${brand.averageRating.toFixed(1)} rating`}
+        >
+          <RatingStars rating={brand.averageRating} />
+          <small>
+            {brand.averageRating > 0
+              ? `${brand.averageRating.toFixed(1)} / 5`
+              : "No reviews yet"}
+          </small>
         </div>
       </article>
     </Link>

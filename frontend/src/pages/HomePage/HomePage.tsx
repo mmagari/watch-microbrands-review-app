@@ -8,6 +8,7 @@ import { TopBrandsSidebar } from "../../components/TopBrandsSidebar/TopBrandsSid
 import { brands } from "../../data/brands";
 import { reviews as initialReviews } from "../../data/reviews";
 import { getAllReviews } from "../../services/reviewsService";
+import type { Review } from "../../types/review";
 import type { SortOption } from "../../types/sortOption";
 import { calculateAverageRating } from "../../utils/calculateAverageRating";
 import { getPriceBucket } from "../../utils/getPriceBucket";
@@ -38,8 +39,9 @@ export const HomePage = () => {
   const [selectedPriceRange, setSelectedPriceRange] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("rating-desc");
-
-  const allReviews = getAllReviews(initialReviews);
+  const [reviews, setReviews] = useState<Review[]>(initialReviews);
+  const [loadingReviews, setLoadingReviews] = useState(true);
+  const [reviewsError, setReviewsError] = useState("");
 
     useEffect(() => {
     const sectionId = location.state?.scrollTo;
@@ -59,21 +61,39 @@ export const HomePage = () => {
       navigate(location.pathname, { replace: true, state: null });
     }, [location, navigate]);
 
-  const brandsWithRating = useMemo(() => {
-    return brands.map((brand) => {
-      const brandReviews = allReviews.filter((review) => review.brandId === brand.id);
-      const rating = calculateAverageRating(brandReviews);
+    useEffect(() => {
+      const loadReviews = async () => {
+        try {
+          setLoadingReviews(true);
+          setReviewsError("");
 
-      return {
-        ...brand,
-        rating,
-        reviewCount: brandReviews.length,
+          const allReviews = await getAllReviews(initialReviews);
+          setReviews(allReviews);
+        } catch (error) {
+          console.error(error);
+          setReviewsError("Failed to load reviews.");
+        } finally {
+          setLoadingReviews(false);
+        }
       };
-    });
-  }, [allReviews]);
+
+      loadReviews();
+    }, []);
+
+  const brandsWithRating = useMemo(() => {
+  return brands.map((brand) => {
+    const brandReviews = reviews.filter((review) => review.brandId === brand.id);
+
+    return {
+      ...brand,
+      averageRating: calculateAverageRating(brandReviews),
+      reviewsCount: brandReviews.length,
+    };
+  });
+}, [reviews]);
 
   const topBrands = useMemo(() => {
-    return [...brandsWithRating].sort((a, b) => b.rating - a.rating).slice(0, 5);
+    return [...brandsWithRating].sort((a, b) => b.averageRating - a.averageRating).slice(0, 5);
   }, [brandsWithRating]);
 
   const filteredBrands = useMemo(() => {
@@ -106,10 +126,10 @@ export const HomePage = () => {
         case "price-desc":
           return b.startingPriceUsd - a.startingPriceUsd;
         case "popularity-desc":
-          return b.reviewCount - a.reviewCount;
+          return b.reviewsCount - a.reviewsCount;
         case "rating-desc":
         default:
-          return b.rating - a.rating;
+          return b.averageRating - a.averageRating;
       }
     });
   }, [brandsWithRating, selectedStyle, selectedPriceRange, searchTerm, sortOption]);
@@ -163,6 +183,9 @@ export const HomePage = () => {
             onSearchChange={setSearchTerm}
             onSortChange={setSortOption}
           />
+          
+          {loadingReviews && <p>Loading reviews...</p>}
+          {reviewsError && <p>{reviewsError}</p>}
 
           <div className={styles.resultsHeader}>
             <p className={styles.resultsText}>

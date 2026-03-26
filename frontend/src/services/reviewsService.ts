@@ -29,13 +29,21 @@ const mapReviewRowToReview = (row: ReviewRow): Review => {
 };
 
 export const getAllReviews = async (initialReviews: Review[]): Promise<Review[]> => {
+  
   const { data, error } = await supabase
+  
     .from("reviews")
     .select("*")
     .order("created_at", { ascending: false });
-
+console.log("SUPABASE RAW DATA:", data);
+console.log("SUPABASE ERROR:", error);
   if (error) {
     console.error("Failed to load reviews from Supabase:", error);
+    return initialReviews;
+  }
+
+  if (!Array.isArray(data)) {
+    console.error("Supabase returned non-array data:", data);
     return initialReviews;
   }
 
