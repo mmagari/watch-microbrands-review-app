@@ -35,8 +35,7 @@ export const getAllReviews = async (initialReviews: Review[]): Promise<Review[]>
     .from("reviews")
     .select("*")
     .order("created_at", { ascending: false });
-console.log("SUPABASE RAW DATA:", data);
-console.log("SUPABASE ERROR:", error);
+
   if (error) {
     console.error("Failed to load reviews from Supabase:", error);
     return initialReviews;
