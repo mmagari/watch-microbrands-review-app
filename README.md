@@ -48,8 +48,8 @@ npm run dev
 Create `.env`:
 
 ```env
-VITE_SUPABASE_URL=https://xqpvsqwqkewtkkzvxeel.supabase.co
-VITE_SUPABASE_ANON_KEY=sb_publishable_H8rmfAv0KPASLl5Dqppcmg_B-F1cweN
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
 ## 🔮 Next Steps
