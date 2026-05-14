@@ -56,7 +56,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 1200,
     featuredModel: "Lander",
     description:
-      "British-designed, Swiss-made independent brand known for bold colours, adventurous design and broad category coverage.",
+      "Founded in 2015, Farer is a British watch brand known for its bold, color-forward designs, high-quality Swiss mechanical movements, and vintage-inspired,, yet contemporary aesthetics. Based in London and, assembling in Switzerland, the independent brand focuses on GMTs, chronographs, and field watches, balancing adventurous design with durable, Swiss Made craftsmanship",
     image: farerImage,
   },
   {
