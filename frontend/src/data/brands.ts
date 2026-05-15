@@ -78,7 +78,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 425,
     featuredModel: "Metric",
     description:
-      "Design-led New York microbrand with compact retro aesthetics inspired by espresso machines and café culture.",
+      "Brew primarily refers to three distinct entities: Brew Watch Co., a New York-based microbrand crafting coffee-inspired timepieces; Brewbrand.ai, an AI tool specifically designed to generate LinkedIn content for professionals; and The Brew Company, a responsible artisan coffee roaster.",
     image: brewImage,
   },
   {
