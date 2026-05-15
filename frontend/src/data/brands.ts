@@ -67,7 +67,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 399,
     featuredModel: "Swordfish",
     description:
-      "Singapore-based enthusiast favourite known for daring materials, limited runs and great value sport watches.",
+      "Zelos Watches is a highly regarded Singapore-based microbrand founded in 2014 by Elshan Tang, known for creating distinctive, high-value tool watches using unique materials like meteorite, bronze, and Damascus steel. Famous for original designs, robust specs, and excellent lume, Zelos frequently uses Kickstarter to launch, producing limited, enthusiast-focused models.",
     image: zelosImage,
   },
   {
