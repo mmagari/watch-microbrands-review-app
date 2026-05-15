@@ -45,7 +45,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 630,
     featuredModel: "Commuter",
     description:
-      "American microbrand known for practical daily-wear watches and hardened steel cases built for real use.",
+      "Traska is a Florida-based independent microbrand founded in 2018, specializing in durable, vintage-inspired 'Go Anywhere, Do Anything' (GADA) sports watches, typically priced under $1,000. Known for using hardened steel (1200 HV) and reliable Miyota movements, the brand emphasizes quality, functional design, and understated style over luxury branding",
     image: traskaImage,
   },
   {
