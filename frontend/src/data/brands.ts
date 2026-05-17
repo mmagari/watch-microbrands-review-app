@@ -122,7 +122,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 600,
     featuredModel: "The Twelve",
     description:
-      "Independent British-designed, Swiss-made brand with a broad catalogue and many strong-value models under $2000.",
+      "Founded in London in 2004, Christopher Ward is an Anglo-Swiss watchmaker famous for its accessible luxury model. By operating exclusively online, they bypass traditional retail markups to offer premium, high-spec timepieces at highly competitive prices.",
     image: christopherWardImage,
   },
   {
