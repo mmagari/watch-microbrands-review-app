@@ -89,7 +89,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 179,
     featuredModel: "Meridian",
     description:
-      "Accessible American brand with a wide range of quartz, solar and automatic field, diver and GMT watches.",
+      "Vaer is a California-based microbrand that bridges the gap between fast-fashion and unattainable luxury by offering rugged, American-assembled tool watches. Founded in 2016 in Venice Beach, the brand focuses on timeless aesthetics, extreme durability (100M+ water resistance), and accessible direct-to-consumer pricing.",
     image: vaerImage,
   },
   {
