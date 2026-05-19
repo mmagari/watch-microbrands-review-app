@@ -144,7 +144,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 650,
     featuredModel: "01Series",
     description:
-      "Playful British independent brand known for colourful dials, compact chronographs and a very distinctive identity.",
+      "Studio Underd0g is a highly celebrated British watch brand founded by product designer Richard Benc in 2020 during the UK lockdown. Known for its tagline “Serious watches for serious collectors (who don't take themselves too seriously),” the company has disrupted the traditional, conservative watch industry by combining vibrant, food-themed dials with mechanical excellence.",
     image: studioUnderd0gImage,
   },
 ];
