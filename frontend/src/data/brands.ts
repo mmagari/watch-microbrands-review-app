@@ -100,7 +100,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 660,
     featuredModel: "Vesterhav",
     description:
-      "Danish brand blending colourful dials, Bauhaus-inspired design cues and strong specs at approachable prices.",
+      "Henry Archer is a respected Danish microbrand of mechanical watches known for combining minimalist Bauhaus design with striking, vibrant dials and accessible pricing. Founded by designer Henrik Schødt, the brand is highly praised for its exceptional customer service and meticulous attention to detail.",
     image: henryArcherImage,
   },
   {
