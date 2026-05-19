@@ -111,7 +111,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 250,
     featuredModel: "Skindiver",
     description:
-      "Heritage-inspired French brand offering accessible skindivers and vintage-flavoured chronographs.",
+      "Wolbrook is an independent French-American watchmaker celebrated for its durable tool watches, most notably the Skindiver. The brand gained legendary status in the 1960s when astronaut Neil Armstrong wore a Wolbrook-manufactured Skindiver Worldtimer as his personal backup watch during the Apollo 11 mission.",
     image: wolbrookImage,
   },
   {
