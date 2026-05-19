@@ -133,7 +133,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 500,
     featuredModel: "Sector II",
     description:
-      "Los Angeles microbrand focused on robust tool and sport watches with a practical, enthusiast-first design approach.",
+      "Founded in Los Angeles in 2017 by Wesley Kwok and Cullen Chen, Nodus is a highly respected independent watchmaker. The name derives from the Latin word for node. They are known for building robust, purpose-built tool watches, offering exceptional technical precision, and assembling and regulating all their watches in-house.",
     image: nodusImage,
   },
   {
