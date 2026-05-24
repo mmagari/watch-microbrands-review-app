@@ -23,7 +23,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 690,
     featuredModel: "Aquascaphe",
     description:
-      "French microbrand known for vintage-inspired mechanical watches with clean proportions and strong enthusiast appeal.",
+      "Baltic is a highly acclaimed independent French watch brand founded by Etienne Malec in 2016. Known for its neo-vintage designs, the company creates mechanical timepieces that are conceptualized, assembled, and adjusted in France.",
     image: balticImage,
   },
   {
