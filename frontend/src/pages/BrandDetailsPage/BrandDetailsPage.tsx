@@ -103,7 +103,7 @@ export const BrandDetailsPage = () => {
         ← Back to brands
       </Link>
 
-      <article>
+      <article className={styles.article}>
         <img className={styles.image} src={brand.image} alt={brand.name} />
 
         <h1>{brand.name}</h1>

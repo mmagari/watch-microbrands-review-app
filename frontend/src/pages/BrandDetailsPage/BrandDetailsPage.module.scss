@@ -3,8 +3,11 @@
 
 .page {
   @include container($content-width);
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: 32px 0 32px 0;
+}
+
+.article {
+  padding: 32px; 
 }
 
 .backLink {
@@ -54,6 +57,7 @@
   border-radius: $radius-md;
   padding: $spacing-lg;
   background: $color-card-background;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 .emptyReviewsTitle {
@@ -78,6 +82,7 @@
   border-radius: $radius-md;
   padding: $spacing-lg;
   background: $color-card-background;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 .factLabel {
