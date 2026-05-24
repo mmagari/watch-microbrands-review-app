@@ -34,7 +34,7 @@ export const brands: Brand[] = [
     startingPriceUsd: 550,
     featuredModel: "Neptune",
     description:
-      "New York-based brand focused on classic mid-century styling, compact cases and versatile everyday watches.",
+      "Lorier (pronounced lor-yé) is a popular, independent watch microbrand founded in 2017 by husband-and-wife team Lauren and Lorenzo Ortega. Based in New York City, the brand is renowned for creating mid-century-inspired mechanical tool watches that capture the romantic, do-it-all spirit of vintage timepieces.",
     image: lorierImage,
   },
   {
