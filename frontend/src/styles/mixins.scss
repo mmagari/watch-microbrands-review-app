@@ -3,7 +3,6 @@
 
 @mixin container($max-width: $container-width) {
   max-width: $max-width;
-  margin: 0 auto;
   padding-left: $spacing-xl;
   padding-right: $spacing-xl;
 }

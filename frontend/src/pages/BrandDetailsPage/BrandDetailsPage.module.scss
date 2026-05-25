@@ -14,6 +14,11 @@
   display: inline-block;
   margin-bottom: $spacing-lg;
   color: $color-text-secondary;
+  padding-top: 1rem;
+}
+
+.backLink:hover {
+  color: $color-link;
 }
 
 .image {
@@ -36,8 +41,13 @@
   color: $color-text-secondary;
 }
 
-.section {
+h1 {
+  margin-left: $spacing-sm;
+}
+
+.section, .reviewsSection {
   margin-top: $spacing-xl;
+  margin-left: $spacing-sm;
 }
 
 .reviewList {

@@ -5,11 +5,13 @@
   @include card;
   @include card-padding;
   margin-top: $spacing-xl;
+  margin-left: $spacing-sm;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 .title {
   margin-bottom: $spacing-lg;
+  margin-left: $spacing-sm;
   font-size: 1.1rem;
   color: $color-text-primary;
 }
@@ -27,6 +29,7 @@
 .label {
   font-size: $font-size-sm;
   color: $color-text-secondary;
+  margin-left: $spacing-sm;
 }
 
 .input,
