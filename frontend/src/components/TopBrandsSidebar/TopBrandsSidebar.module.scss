@@ -1,7 +1,21 @@
 @use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
 
 #top-rated{
   scroll-margin-top: 90px;
+}
+
+.sidebar{
+  @include card;
+  @include card-padding;
+}
+
+.sidebarTitle {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $color-border-light;
+  padding-bottom: 1rem;
 }
 
 .topBrandItem {
