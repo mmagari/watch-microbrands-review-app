@@ -11,8 +11,10 @@
   border-bottom: 1px solid $color-border-light;
   padding-bottom: $spacing-lg;
   margin-bottom: $spacing-lg;
-  max-width: 720px;
   scroll-margin-top: 90px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
 }
 
 .title {
@@ -20,6 +22,7 @@
   font-size: $font-size-xl;
   font-weight: 700;
   color: $color-text-primary;
+  display: block;
 }
 
 .subtitle {

@@ -157,11 +157,12 @@ export const HomePage = () => {
 
   return (
     <main className={styles.page}>
-      <section className={styles.intro} id="filters">        <h1 className={styles.title}>Discover Watch Microbrands</h1>
-        <p className={styles.subtitle}>
-          Explore independent watch brands, browse styles and price ranges, and
-          read community reviews in one clean directory.
-        </p>
+      <section className={styles.intro} id="filters">        
+          <h1 className={styles.title}>Discover Watch Microbrands</h1>
+          <p className={styles.subtitle}>
+            Explore independent watch brands, browse styles and price ranges, and
+            read community reviews in one clean directory.
+          </p>
       </section>
 
       <div className={styles.layout}>
