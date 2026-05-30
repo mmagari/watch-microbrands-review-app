@@ -45,10 +45,10 @@
 
 .resultsHeader {
   display: flex;
-  align-items: left;
+  align-items: center;
   justify-content: space-between;
   gap: $spacing-md;
-  margin-bottom: $spacing-lg;
+  margin-bottom: $spacing-md;
 }
 
 .resultsText {
@@ -92,7 +92,7 @@
 
 .emptyStateButton {
   margin-top: $spacing-lg;
-  border: 1px solid $color-border-light;
+  border: 1px solid $color-border-dark;
   background: $color-card-background;
   color: $color-text-primary;
   border-radius: $radius-pill;
