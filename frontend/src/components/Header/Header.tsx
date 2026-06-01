@@ -73,6 +73,13 @@ export const Header = () => {
           >
             News
           </button>
+          <button
+            type="button"
+            className={styles.navButton}
+            onClick={() => scrollToSection("articles")}
+          >
+            Articles
+          </button>
         </nav>
 
         <button
