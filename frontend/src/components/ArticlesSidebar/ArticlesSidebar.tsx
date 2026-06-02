@@ -22,7 +22,7 @@ export const ArticlesSidebar = ({ articles }: Props) => {
               <Link
                 key={article.id}
                 to={`/brand/${article.id}`}
-                className={styles.topBrandItem}
+                className={styles.articlesItem}
               >
                 <span className={styles.topBrandName}>{article.title}</span>
               </Link>
