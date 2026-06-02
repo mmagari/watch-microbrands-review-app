@@ -1,0 +1,48 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+
+#articles{
+  scroll-margin-top: 180px;
+}
+
+.sidebar{
+  @include card;
+  @include card-padding;
+}
+
+.sidebarTitle {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $color-border-light;
+  padding-bottom: 1rem;
+}
+
+.topBrandItem {
+  display: flex;
+  justify-content: space-between;
+  gap: $spacing-md;
+  font-size: 0.9rem;
+  color: $color-text-secondary;
+  padding: 6px 8px;
+  border-radius: $radius-sm;
+  border-bottom: 1px solid $color-border-light;
+  transition: color 0.2s ease;
+}
+
+.topBrandItem:last-child {
+  border-bottom: none;
+}
+
+.topBrandItem:hover {
+  color: $color-text-primary;
+  background: #fafafa;
+}
+
+.topBrandName {
+  color: $color-text-primary;
+}
+
+.topBrandRating {
+  color: $color-text-muted;
+}

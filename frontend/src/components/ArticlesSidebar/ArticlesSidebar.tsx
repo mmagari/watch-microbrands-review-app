@@ -17,7 +17,7 @@ export const ArticlesSidebar = ({ articles }: Props) => {
         <div className={styles.sidebarSection}>
           <p className={styles.sidebarTitle}>Articles</p>
 
-          <div className={styles.topBrandList}>
+          <div className={styles.articlesList}>
             {articles.map((article) => (
               <Link
                 key={article.id}
