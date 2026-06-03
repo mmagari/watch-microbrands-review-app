@@ -39,7 +39,7 @@ export const articles: Article[] = [
     title: "New Beaucroft",
     author: "Tom",
     text: "Really solid value and cool designs, but not everyone will love the acrylic crystal.",
-    createdAt: "2026.03.07",
+    createdAt: "2026.03.0",
   },
   {
     id: "article-6",
