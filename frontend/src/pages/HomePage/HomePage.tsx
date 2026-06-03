@@ -246,9 +246,10 @@ export const HomePage = () => {
             </div>
           )}
         </section>
-
-        <TopBrandsSidebar brands={topBrands} />
-        <ArticlesSidebar articles={allArticles} />
+          <div>
+            <TopBrandsSidebar brands={topBrands} />
+            <ArticlesSidebar articles={allArticles} />
+        </div>
       </div>
     </main>
   );

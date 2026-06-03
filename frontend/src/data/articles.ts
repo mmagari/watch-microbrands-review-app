@@ -7,7 +7,7 @@ export const articles: Article[] = [
     title: "New Baltic Model",
     author: "Michael",
     text: "Beautiful vintage styling and great proportions. One of my favorite microbrands.",
-    createdAt: "2026-03-10",
+    createdAt: "2026.03.10",
   },
   {
     id: "article-2",
@@ -15,7 +15,7 @@ export const articles: Article[] = [
     title: "Last CHW Model",
     author: "Chris",
     text: "Great design and finishing for the price, although I’d love to see better lume.",
-    createdAt: "2026-03-11",
+    createdAt: "2026.03.11",
   },
   {
     id: "article-3",
@@ -23,7 +23,7 @@ export const articles: Article[] = [
     title: "New Lorier Model",
     author: "Daniel",
     text: "Amazing retro vibe and a very fun everyday watch brand.",
-    createdAt: "2026-03-09",
+    createdAt: "2026.03.09",
   },
   {
     id: "article-4",
@@ -31,6 +31,22 @@ export const articles: Article[] = [
     title: "Last Wise Model",
     author: "Tom",
     text: "Really solid value and cool designs, but not everyone will love the acrylic crystal.",
-    createdAt: "2026-03-08",
+    createdAt: "2026.03.08",
+  },
+  {
+    id: "article-5",
+    brandId: "Beaucroft",
+    title: "New Beaucroft",
+    author: "Tom",
+    text: "Really solid value and cool designs, but not everyone will love the acrylic crystal.",
+    createdAt: "2026.03.07",
+  },
+  {
+    id: "article-6",
+    brandId: "Zelos",
+    title: "Last Zelos Model",
+    author: "Tom",
+    text: "Really solid value and cool designs, but not everyone will love the acrylic crystal.",
+    createdAt: "2026.03.08",
   },
 ];

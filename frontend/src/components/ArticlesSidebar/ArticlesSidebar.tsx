@@ -13,7 +13,7 @@ export const ArticlesSidebar = ({ articles }: Props) => {
     <aside className={styles.sidebar} id="articles">
       <div className={styles.sidebarCard}>
         <div className={styles.sidebarSection}>
-          <p className={styles.sidebarTitle}>Articles</p>
+          <p className={styles.sidebarTitle}>Latest articles</p>
 
           <div className={styles.articlesList}>
             {articles.map((article) => (
@@ -22,7 +22,7 @@ export const ArticlesSidebar = ({ articles }: Props) => {
                 to={`/article/${article.id}`}
                 className={styles.articlesItem}
               >
-                <span className={styles.topBrandName}>{article.title}</span>
+                <span className={styles.articlesItem}>{article.title} {article.createdAt}</span>
               </Link>
             ))}
           </div>

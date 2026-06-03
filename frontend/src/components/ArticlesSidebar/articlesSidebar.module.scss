@@ -9,6 +9,7 @@
 .sidebar{
   @include card;
   @include card-padding;
+  margin-top: 2rem;
 }
 
 .sidebarTitle {
@@ -18,11 +19,11 @@
   padding-bottom: 1rem;
 }
 
-.topBrandItem {
+.articlesItem {
   display: flex;
   justify-content: space-between;
   gap: $spacing-md;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   color: $color-text-secondary;
   padding: 6px 8px;
   border-radius: $radius-sm;
