@@ -30,19 +30,15 @@
   transition: color 0.2s ease;
 }
 
-.topBrandItem:last-child {
+.articlesItem:last-child {
   border-bottom: none;
 }
 
-.topBrandItem:hover {
+.articlesItem:hover {
   color: $color-text-primary;
   background: #fafafa;
 }
 
-.topBrandName {
+.articlesTitle {
   color: $color-text-primary;
-}
-
-.topBrandRating {
-  color: $color-text-muted;
 }

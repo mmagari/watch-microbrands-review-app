@@ -5,7 +5,9 @@ import { BrandCard } from "../../components/BrandCard/BrandCard";
 import { BrandsToolbar } from "../../components/BrandsToolbar/BrandsToolbar";
 import { FilterSidebar } from "../../components/FilterSidebar/FilterSidebar";
 import { TopBrandsSidebar } from "../../components/TopBrandsSidebar/TopBrandsSidebar";
+import { ArticlesSidebar } from "../../components/ArticlesSidebar/ArticlesSidebar";
 import { brands } from "../../data/brands";
+import { articles } from "../../data/articles";
 import { reviews as initialReviews } from "../../data/reviews";
 import { getAllReviews } from "../../services/reviewsService";
 import type { Review } from "../../types/review";
@@ -95,6 +97,10 @@ export const HomePage = () => {
   const topBrands = useMemo(() => {
     return [...brandsWithRating].sort((a, b) => b.averageRating - a.averageRating).slice(0, 5);
   }, [brandsWithRating]);
+
+  const allArticles = useMemo(() => {
+    return [...articles].slice(0, 5);
+  }, []);
 
   const filteredBrands = useMemo(() => {
     const filtered = brandsWithRating.filter((brand) => {
@@ -242,6 +248,7 @@ export const HomePage = () => {
         </section>
 
         <TopBrandsSidebar brands={topBrands} />
+        <ArticlesSidebar articles={allArticles} />
       </div>
     </main>
   );
