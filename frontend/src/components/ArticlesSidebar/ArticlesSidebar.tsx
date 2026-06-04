@@ -19,7 +19,7 @@ export const ArticlesSidebar = ({ articles }: Props) => {
             {articles.map((article) => (
               <Link
                 key={article.id}
-                to={`/article/${article.id}`}
+                to={`/articles/${article.id}`}
                 className={styles.articlesItem}
               >
                 <span className={styles.articlesItem}>{article.title} {article.createdAt}</span>
