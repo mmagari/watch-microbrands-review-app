@@ -14,32 +14,32 @@ export const ArticlesPage = () => {
         </p>
       </section>
 
-      <section className={styles.grid}>
+      <section className={styles.articlesGrid}>
         {articles.map((article) => (
-          <article key={article.id} className={styles.card}>
+          <article key={article.id} className={styles.articleCard}>
             <img
               src={article.image}
               alt={article.title}
-              className={styles.image}
+              className={styles.articleImage}
             />
 
-            <div className={styles.content}>
+            <div className={styles.articleContent}>
               <div className={styles.meta}>
-                <span>{article.category}</span>
+                <span>{article.category} </span>
                 <span>{article.readingTime}</span>
               </div>
 
-              <h2 className={styles.cardTitle}>{article.title}</h2>
+              <h2 className={styles.articleTitle}>{article.title}</h2>
 
-              <p className={styles.excerpt}>{article.excerpt}</p>
+              <p className={styles.articleExcerpt}>{article.excerpt}</p>
 
               <div className={styles.footer}>
                 <span>
                   By {article.author} · {article.createdAt}
                 </span>
 
-                <Link to={`/articles/${article.id}`} className={styles.link}>
-                  Read more
+                <Link to={`/articles/${article.id}`} className={styles.readMore}>
+                  Read more...
                 </Link>
               </div>
             </div>

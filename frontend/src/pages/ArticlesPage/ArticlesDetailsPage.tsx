@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { articles } from "../../data/articles";
-import styles from "./ArticleDetailsPage.module.scss";
+import styles from "./ArticlesDetailsPage.module.scss";
 
 export const ArticleDetailsPage = () => {
   const { articleId } = useParams();

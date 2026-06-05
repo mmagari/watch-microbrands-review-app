@@ -9,7 +9,7 @@ export const articles: Article[] = [
     category: "New release",
     createdAt: "2026.03.10",
     readingTime: "4 min read",
-    image: "/images/articles/baltic.jpg",
+    image: "/src/assets/articles/Baltic.png",
     excerpt:
       "Baltic continues to prove that vintage-inspired design can feel fresh, wearable and genuinely exciting.",
     text: `Baltic has built its reputation around vintage-inspired watches with clean proportions, strong character and accessible pricing.
@@ -28,7 +28,7 @@ For collectors who enjoy vintage aesthetics but want modern reliability, this ne
     category: "Review",
     createdAt: "2026.03.11",
     readingTime: "5 min read",
-    image: "/images/articles/christopher-ward.jpg",
+    image: "/src/assets/articles/CHW.jpg",
     excerpt:
       "Christopher Ward keeps pushing value, finishing and design quality in the modern watch market.",
     text: `Christopher Ward has become one of the most respected independent watch brands thanks to its strong price-to-quality ratio.
@@ -47,7 +47,7 @@ For buyers who want a modern watch with strong specifications and a clean design
     category: "Microbrand spotlight",
     createdAt: "2026.03.09",
     readingTime: "4 min read",
-    image: "/images/articles/lorier.jpg",
+    image: "/src/assets/articles/Lorier.WEBP",
     excerpt:
       "Lorier delivers retro charm, compact proportions and a fun everyday wearing experience.",
     text: `Lorier is a brand that understands vintage charm extremely well. Their watches are not trying to be oversized luxury pieces. Instead, they focus on balance, character and everyday comfort.
@@ -66,7 +66,7 @@ If you like watches with personality and old-school inspiration, Lorier remains 
     category: "Value pick",
     createdAt: "2026.03.08",
     readingTime: "3 min read",
-    image: "/images/articles/wise.jpg",
+    image: "/src/assets/articles/Traska.WEBP",
     excerpt:
       "Wise offers strong specifications, bold designs and impressive value for everyday watch fans.",
     text: `Wise is one of those microbrands that often surprises people with how much value it offers.
@@ -85,7 +85,7 @@ Not every design will appeal to everyone, but Wise continues to show that indepe
     category: "Dress watches",
     createdAt: "2026.03.07",
     readingTime: "4 min read",
-    image: "/images/articles/beaucroft.jpg",
+    image: "/src/assets/articles/Nodus.WEBP",
     excerpt:
       "Beaucroft focuses on elegant design, clean dials and watches that work well in smarter outfits.",
     text: `Beaucroft is a microbrand with a softer, more elegant design direction than many tool-watch-focused brands.
@@ -104,7 +104,7 @@ For people looking for a microbrand watch that feels elegant rather than sporty,
     category: "Tool watches",
     createdAt: "2026.03.08",
     readingTime: "5 min read",
-    image: "/images/articles/zelos.jpg",
+    image: "/src/assets/articles/Vaer.WEBP",
     excerpt:
       "Zelos remains one of the boldest microbrands, known for strong materials and adventurous designs.",
     text: `Zelos has always been a brand for people who enjoy bold microbrand watches. The designs are often strong, technical and full of character.
