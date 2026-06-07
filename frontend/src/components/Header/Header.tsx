@@ -66,13 +66,14 @@ export const Header = () => {
           >
             Brands
           </button>
-          <button
+          <Link
+            to="/articles"
             type="button"
             className={styles.navButton}
-            onClick={() => scrollToSection("articles")}
+            
           >
             Articles
-          </button>
+          </ Link>
         </nav>
 
         <button
